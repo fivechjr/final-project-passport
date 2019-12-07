@@ -27,11 +27,11 @@
 
 html,
 body {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 body {
-  background: white;
+    background: #f9f9f9;
 }
 
 @tailwind base;
@@ -39,5 +39,5 @@ body {
 @tailwind utilities;
 
 * {
-  outline: none !important;
+    outline: none !important;
 }
