@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-per-event',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./per-event.page.scss'],
 })
 export class PerEventPage implements OnInit {
-    constructor() {}
+    constructor(private location: Location) {}
 
     ngOnInit() {}
+
+    goBack() {
+        this.location.back();
+    }
 }

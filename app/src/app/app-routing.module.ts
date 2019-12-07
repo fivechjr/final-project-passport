@@ -10,6 +10,8 @@ import { SavedPage } from './saved/saved.page';
 import { WalletPage } from './wallet/wallet.page';
 import { SavedPageModule } from './saved/saved.module';
 import { WalletPageModule } from './wallet/wallet.module';
+import { SettingsPage } from './settings/settings.page';
+import { SettingsPageModule } from './settings/settings.module';
 
 const routes: Routes = [
     {
@@ -28,7 +30,6 @@ const routes: Routes = [
     },
     {
         path: 'per-event',
-        // loadChildren: () => import("./per-event/per-event.module").then(m => m.PerEventPageModule),
         component: PerEventPage,
         pathMatch: 'full',
         data: {
@@ -53,6 +54,11 @@ const routes: Routes = [
         component: WalletPage,
         pathMatch: 'full',
     },
+    {
+        path: 'settings',
+        component: SettingsPage,
+        pathMatch: 'full',
+    },
 ];
 
 @NgModule({
@@ -62,6 +68,7 @@ const routes: Routes = [
         SearchPageModule,
         SavedPageModule,
         WalletPageModule,
+        SettingsPageModule,
         RouterModule.forRoot(routes, {
             preloadingStrategy: PreloadAllModules,
             scrollPositionRestoration: 'enabled',

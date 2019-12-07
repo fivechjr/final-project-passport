@@ -1,9 +1,30 @@
-<app-frame [withFooter]="false">
+<app-frame [withFooter]="false" [backgroundColor]='"rgb(29, 42, 48)"'>
+    <header
+        id="header"
+        class="-mx-6 px-6 w-full fixed z-20 text-white"
+        style="background: rgb(29, 42, 48)"
+    >
+        <div class="flex flex-row items-center">
+            <div
+                (click)="goBack()"
+                class="flex items-center justify-center mr-3 cursor-pointer"
+            >
+                <ion-icon
+                    class="text-lg"
+                    name="arrow-back"
+                    mode="md"
+                ></ion-icon>
+            </div>
+            <p class="font-sans text-sm py-4 bg-transparent w-full">
+                Blognone Tomorrow 2019
+            </p>
+        </div>
+    </header>
     <main>
         <div class="-mx-6">
             <img
                 class="w-full"
-                src="https://p-u.popcdn.net/events/poster_a4s/000/007/210/large/Poster.png?1574191918"
+                src="https://p-u.popcdn.net/events/poster_a4s/000/006/100/large/KV-cover_800x1132px_%281%29.jpg?1564484567"
             />
         </div>
         <header class="py-6 flex justify-between font-sans">
@@ -14,7 +35,7 @@
                     TODAY
                 </p>
                 <h1 class="text-xl font-heading">
-                    JavaScript Bangkok 2019
+                    Blognone Tomorrow 2019
                 </h1>
             </div>
         </header>
