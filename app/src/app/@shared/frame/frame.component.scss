@@ -1,4 +1,17 @@
+#footer {
+    height: 50px;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.8);
+}
+
 .footer-grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#spacer {
+    height: 20px;
+    backdrop-filter: blur(50px);
+    background: rgba(255, 255, 255, 0);
 }

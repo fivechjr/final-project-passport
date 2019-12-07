@@ -1,12 +1,14 @@
 <div
+    id="spacer"
     class="w-full flex sticky top-0 z-20"
-    style="height: 20px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(50px);"
+    [style.background]="backgroundColor"
 ></div>
+
 <main>
     <div
+        id="footer"
         *ngIf="withFooter"
         class="select-none footer-grid-container text-black w-full fixed bottom-0 bg-white z-20"
-        style="height: 50px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(50px); box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.05)"
     >
         <div
             class="cursor-pointer flex flex-col items-center justify-center border-t border-pink-600"

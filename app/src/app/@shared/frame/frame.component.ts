@@ -6,8 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./frame.component.scss'],
 })
 export class FrameComponent implements OnInit {
-    @Input() withFooter: Boolean = true;
-    @Input() backgroundColor: String = 'rgba(255, 255, 255, 0.8)';
+    @Input() withFooter: boolean = true;
+    @Input() backgroundColor: string = 'rgba(255, 255, 255, 0.5)';
+
     constructor() {}
 
     ngOnInit() {}
