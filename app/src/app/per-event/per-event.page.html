@@ -1,8 +1,9 @@
 <app-frame [withFooter]="false" [backgroundColor]='"rgb(29, 42, 48)"'>
     <header
         id="header"
-        class="-mx-6 px-6 w-full fixed z-20 text-white"
-        style="background: rgb(29, 42, 48)"
+        class="-mx-6 px-6 text-white w-full fixed z-10"
+        [style.background]="(navigationBackground | async) ? 'rgb(29, 42, 48)' : 'transparent'"
+        [ngStyle]="{'box-shadow': (navigationBackground | async) ? '0 25px 50px 0px rgba(0, 0, 0, 0.25)' : 'none'}"
     >
         <div class="flex flex-row items-center">
             <div
@@ -15,11 +16,15 @@
                     mode="md"
                 ></ion-icon>
             </div>
-            <p class="font-sans text-sm py-4 bg-transparent w-full">
+            <p
+                class="font-sans text-sm py-4 bg-transparent w-full truncate"
+                [style.opacity]="(navigationBackground | async) ? '1' : '0'"
+            >
                 Blognone Tomorrow 2019
             </p>
         </div>
     </header>
+
     <main>
         <div class="-mx-6">
             <img
@@ -113,7 +118,7 @@
             </p>
         </div>
 
-        <div class="mb-6">
+        <div class="pt-6 mb-6 border-t">
             <div class="schedule-grid text-sm font-copy">
                 <p
                     class="text-xs font-sans text-gray-600 tracking-widest leading-none"
