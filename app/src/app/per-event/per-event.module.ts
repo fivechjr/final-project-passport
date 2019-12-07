@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PerEventPageRoutingModule } from './per-event-routing.module';
 
 import { PerEventPage } from './per-event.page';
+import { SharedModule } from '../@shared/shared.module';
 
 @NgModule({
     imports: [
@@ -14,6 +15,7 @@ import { PerEventPage } from './per-event.page';
         FormsModule,
         IonicModule,
         PerEventPageRoutingModule,
+        SharedModule,
     ],
     declarations: [PerEventPage],
     exports: [PerEventPage],

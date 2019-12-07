@@ -1,0 +1,57 @@
+<div
+    class="w-full flex sticky top-0 z-20"
+    style="height: 20px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(50px);"
+></div>
+<main>
+    <div
+        *ngIf="withFooter"
+        class="select-none footer-grid-container text-black w-full fixed bottom-0 bg-white z-20"
+        style="height: 50px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(50px); box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.05)"
+    >
+        <div
+            class="cursor-pointer flex flex-col items-center justify-center border-t border-pink-600"
+        >
+            <ion-icon
+                class="text-xl text-pink-600"
+                name="flash"
+                mode="ios"
+            ></ion-icon>
+            <p class="mt-1 text-2xs text-pink-500 font-sans leading-none">
+                Events
+            </p>
+        </div>
+        <div class="cursor-pointer flex flex-col items-center justify-center">
+            <ion-icon
+                class="text-xl text-gray-600"
+                name="wallet"
+                mode="ios"
+            ></ion-icon>
+            <p class="mt-1 text-2xs text-gray-500 font-sans leading-none">
+                Wallet
+            </p>
+        </div>
+        <div class="cursor-pointer flex flex-col items-center justify-center">
+            <ion-icon
+                class="text-xl text-gray-600"
+                name="bookmark"
+                mode="ios"
+            ></ion-icon>
+            <p class="mt-1 text-2xs text-gray-500 font-sans leading-none">
+                Saved
+            </p>
+        </div>
+        <div class="cursor-pointer flex flex-col items-center justify-center">
+            <ion-icon
+                class="text-xl text-gray-600"
+                name="cog"
+                mode="ios"
+            ></ion-icon>
+            <p class="mt-1 text-2xs text-gray-500 font-sans leading-none">
+                Settings
+            </p>
+        </div>
+    </div>
+    <ng-content></ng-content>
+    <div class="w-full flex mt-6"></div>
+    <div *ngIf="withFooter" class="w-full flex" style="height: 50px"></div>
+</main>

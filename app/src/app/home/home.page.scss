@@ -1,15 +1,10 @@
 .grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 1rem; // mx-4
-  row-gap: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem; // mx-4
+    row-gap: 2rem;
 }
 
 ion-content {
-  --background: none;
-}
-
-.footer-grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+    --background: none;
 }
