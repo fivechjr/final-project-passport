@@ -4,45 +4,66 @@
     [style.background]="backgroundColor"
 ></div>
 
-<main>
+<main class="select-none">
     <div
         id="footer"
         *ngIf="withFooter"
         class="select-none footer-grid-container text-black w-full fixed bottom-0 bg-white z-20"
     >
         <div
-            class="cursor-pointer flex flex-col items-center justify-center border-t border-pink-600"
+            routerLink="/events"
+            class="cursor-pointer flex flex-col items-center justify-center"
         >
             <ion-icon
-                class="text-xl text-pink-600"
+                class="text-xl text-gray-600"
+                routerLinkActive="text-pink-600"
                 name="flash"
                 mode="ios"
             ></ion-icon>
-            <p class="mt-1 text-2xs text-pink-500 font-sans leading-none">
+            <p
+                class="mt-1 text-2xs text-gray-500 font-sans leading-none"
+                routerLinkActive="text-pink-500"
+            >
                 Events
             </p>
         </div>
-        <div class="cursor-pointer flex flex-col items-center justify-center">
+        <div
+            routerLink="/wallet"
+            class="cursor-pointer flex flex-col items-center justify-center"
+        >
             <ion-icon
                 class="text-xl text-gray-600"
+                routerLinkActive="text-pink-600"
                 name="wallet"
                 mode="ios"
             ></ion-icon>
-            <p class="mt-1 text-2xs text-gray-500 font-sans leading-none">
+            <p
+                class="mt-1 text-2xs text-gray-500 font-sans leading-none"
+                routerLinkActive="text-pink-500"
+            >
                 Wallet
             </p>
         </div>
-        <div class="cursor-pointer flex flex-col items-center justify-center">
+        <div
+            routerLink="/saved"
+            class="cursor-pointer flex flex-col items-center justify-center "
+        >
             <ion-icon
                 class="text-xl text-gray-600"
+                routerLinkActive="text-pink-600"
                 name="bookmark"
                 mode="ios"
             ></ion-icon>
-            <p class="mt-1 text-2xs text-gray-500 font-sans leading-none">
+            <p
+                class="mt-1 text-2xs text-gray-500 font-sans leading-none"
+                routerLinkActive="text-pink-500"
+            >
                 Saved
             </p>
         </div>
-        <div class="cursor-pointer flex flex-col items-center justify-center">
+        <div
+            class="cursor-pointer flex flex-col items-center justify-center border-pink-600"
+        >
             <ion-icon
                 class="text-xl text-gray-600"
                 name="cog"
@@ -53,7 +74,9 @@
             </p>
         </div>
     </div>
-    <ng-content></ng-content>
+    <div class="mx-6">
+        <ng-content></ng-content>
+    </div>
     <div class="w-full flex mt-6"></div>
     <div *ngIf="withFooter" class="w-full flex" style="height: 50px"></div>
 </main>

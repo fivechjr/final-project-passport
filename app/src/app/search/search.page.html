@@ -1,0 +1,22 @@
+<app-frame [withFooter]="false" [backgroundColor]="'#fff'">
+    <header class="-mx-6 px-6">
+        <div class="flex flex-row items-center">
+            <div
+                (click)="goBack()"
+                class="text-black flex items-center justify-center mr-3 cursor-pointer"
+            >
+                <ion-icon
+                    class="text-lg"
+                    name="arrow-back"
+                    mode="md"
+                ></ion-icon>
+            </div>
+            <input
+                #search
+                class="font-sans text-sm py-4 bg-transparent w-full"
+                type="text"
+                placeholder="Type something..."
+            />
+        </div>
+    </header>
+</app-frame>

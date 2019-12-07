@@ -10,10 +10,10 @@ import {
 } from '@angular/animations';
 
 export const routerTransition = trigger('routerTransition', [
-    transition('* => isLeft', slideTo('left')),
-    transition('* => isRight', slideTo('right')),
-    transition('isRight => *', slideTo('left')),
-    transition('isLeft => *', slideTo('right')),
+    transition('isRight => isLeft', slideTo('left')),
+    transition('isLeft => isRight', slideTo('right')),
+    transition('isRight => isRight', slideTo('right')),
+    transition('isLeft => isLeft', slideTo('left')),
 ]);
 
 function slideTo(direction) {
