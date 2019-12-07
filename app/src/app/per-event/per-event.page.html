@@ -1,8 +1,9 @@
-<app-frame [withFooter]="false" [backgroundColor]='"rgb(29, 42, 48)"'>
+<app-frame [withFooter]="false" [backgroundColor]="fallbackBackground">
     <header
         id="header"
-        class="-mx-6 px-6 text-white w-full fixed z-10"
-        [style.background]="(navigationBackground | async) ? 'rgb(29, 42, 48)' : 'transparent'"
+        class="-mx-6 px-6 w-full fixed z-10"
+        [style.color]="getNavigationBarTextColor(fallbackBackground)"
+        [style.background]="(navigationBackground | async) ? fallbackBackground : 'transparent'"
         [ngStyle]="{'box-shadow': (navigationBackground | async) ? '0 25px 50px 0px rgba(0, 0, 0, 0.25)' : 'none'}"
     >
         <div class="flex flex-row items-center">
@@ -18,7 +19,9 @@
             </div>
             <p
                 class="font-sans text-sm py-4 bg-transparent w-full truncate"
+                [style.maxWidth]="(navigationBackground | async) ? '100%' : '0%'"
                 [style.opacity]="(navigationBackground | async) ? '1' : '0'"
+                [style.transition]="'all .75s'"
             >
                 Blognone Tomorrow 2019
             </p>
@@ -27,15 +30,22 @@
 
     <main>
         <div class="-mx-6">
-            <img
+            <div
                 class="w-full"
-                src="https://p-u.popcdn.net/events/poster_a4s/000/006/100/large/KV-cover_800x1132px_%281%29.jpg?1564484567"
-            />
+                [style.background]="fallbackBackground"
+                [style.height]="'200px'"
+            >
+                <img
+                    src="https:/d/p-u.popcdn.net/events/poster_a4s/000/006/100/large/KV-cover_800x1132px_%281%29.jpg?1564484567"
+                    alt=""
+                    class="w-full"
+                />
+            </div>
         </div>
         <header class="py-6 flex justify-between font-sans">
             <div class="flex flex-col">
                 <p
-                    class="text-xs mb-2 text-pink-600 tracking-widest leading-none"
+                    class="text-xs mb-2 text-blue-600 tracking-widest leading-none"
                 >
                     TODAY
                 </p>
@@ -99,7 +109,7 @@
         </div>
         <div class="mb-6">
             <button
-                class="w-full p-3 text-xs font-sans tracking-widest text-white bg-pink-600 rounded-lg shadow-lg"
+                class="w-full p-3 text-xs font-sans tracking-widest text-white bg-blue-600 rounded-lg shadow-lg"
             >
                 JOIN EVENT
             </button>
