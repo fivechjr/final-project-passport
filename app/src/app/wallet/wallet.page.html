@@ -1,7 +1,90 @@
 <app-frame [backgroundColor]="'#fff'">
     <header class="-mx-6 px-6 shadow-2xl">
         <div class="flex flex-row items-center">
-            <p class="font-sans text-sm py-4 bg-transparent w-full">Wallet</p>
+            <p class="font-sans text-sm py-4 bg-transparent w-full">
+                My Wallet
+            </p>
         </div>
     </header>
+    <div class="py-6">
+        <div
+            class="flex items-end bg-white p-4 rounded-lg shadow-2xl mb-6"
+            style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)), url(https://p-u.popcdn.net/events/poster_a4s/000/006/100/large/KV-cover_800x1132px_%281%29.jpg?1564484567); height: 120px"
+            [style.backgroundSize]="'cover'"
+            [style.backgroundPosition]="'center center'"
+        >
+            <div class="flex items-baseline">
+                <div class="flex flex-col mr-4">
+                    <p
+                        class="text-xs font-sans font-semibold text-white tracking-widest leading-none"
+                    >
+                        13
+                    </p>
+                    <p
+                        class="text-2xs font-sans font-semibold text-red-600 tracking-widest leading-none mt-1"
+                    >
+                        DEC
+                    </p>
+                </div>
+
+                <div class="flex flex-col">
+                    <p class="text-sm text-white truncate">
+                        Blognone Tomorrow 2019
+                    </p>
+                    <p
+                        class="text-2xs tracking-wide font-sans tracking-widest text-white uppercase"
+                    >
+                        Engineering
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div
+            class="flex items-end bg-white p-4 rounded-lg shadow-2xl mb-6"
+            style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)), url(https://p-u.popcdn.net/events/poster_a4s/000/007/535/large/FB_feed-100.jpg?1574305139); height: 120px"
+            [style.backgroundSize]="'cover'"
+            [style.backgroundPosition]="'center center'"
+        >
+            <div class="flex items-baseline">
+                <div class="flex flex-col mr-4">
+                    <p
+                        class="text-xs font-sans font-semibold text-white tracking-widest leading-none"
+                    >
+                        13
+                    </p>
+                    <p
+                        class="text-2xs tracking-wider font-sans font-semibold text-red-600 tracking-widest leading-none mt-1"
+                    >
+                        DEC
+                    </p>
+                </div>
+
+                <div class="flex flex-col">
+                    <p class="text-sm text-white truncate">
+                        Blognone Tomorrow 2019
+                    </p>
+                    <p
+                        class="text-2xs font-sans tracking-widest text-white uppercase"
+                    >
+                        Engineering
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center">
+            <button
+                class="flex items-center flex-row p-2 rounded bg-white shadow-xl"
+            >
+                <ion-icon
+                    class="text-normal text-gray-400 mr-2"
+                    name="arrow-down"
+                    mode="ios"
+                ></ion-icon>
+                <span
+                    class="text-xs font-sans tracking-widest text-gray-600 leading-none"
+                    >VIEW PAST EVENTS</span
+                >
+            </button>
+        </div>
+    </div>
 </app-frame>
