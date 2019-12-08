@@ -24,6 +24,7 @@
     "@nestjs/core": "^6.7.2",
     "@nestjs/mongoose": "^6.1.2",
     "@nestjs/platform-express": "^6.7.2",
+    "helmet": "^3.21.2",
     "mongoose": "^5.7.14",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
