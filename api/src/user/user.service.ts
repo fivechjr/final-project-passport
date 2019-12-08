@@ -1,14 +1,20 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  BadRequestException,
+  NotFoundException,
+} from '@nestjs/common';
 import { UserI, User } from 'src/models/user.model';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CryptoService } from 'src/crypto/crypto.service';
+import { EventService } from 'src/event/event.service';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectModel(User) private readonly userModel: Model<UserI>,
     private readonly cryptoService: CryptoService,
+    private readonly eventService: EventService,
   ) {}
 
   async getAll() {
@@ -46,6 +52,25 @@ export class UserService {
       lastName,
       studentID,
     };
+  }
+
+  async addEvent(userID: string, eventID: string) {
+    const user = await this.userModel
+      .findOne({
+        _id: userID,
+      })
+      .exec();
+
+    if (!user) {
+      throw new NotFoundException('Not Found');
+    }
+
+    if (user.events.includes(eventID)) {
+      throw new BadRequestException('Conflict');
+    }
+
+    user.events.push(eventID);
+    const ret = await user.save();
   }
 
   getFaculty(studentID: string) {

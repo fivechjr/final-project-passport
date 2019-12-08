@@ -19,11 +19,11 @@ export class AuthService {
     const check = await this.userService.getUserByStudentID(user.studentID);
 
     if (!check) {
-      throw new UnauthorizedException('User not found.');
+      throw new UnauthorizedException('Not Found');
     }
 
     if (!this.cryptoService.compareSync(user.password, check.password)) {
-      throw new UnauthorizedException('Wrong password.');
+      throw new UnauthorizedException('Invalid Password');
     }
 
     return { token: this.jwtService.sign({ userID: check._id }) };

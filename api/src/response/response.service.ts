@@ -1,12 +1,20 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  BadRequestException,
+  NotFoundException,
+} from '@nestjs/common';
 import { Response, ResponseI } from 'src/models/response.model';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { UserService } from 'src/user/user.service';
+import { EventService } from 'src/event/event.service';
 
 @Injectable()
 export class ResponseService {
   constructor(
     @InjectModel(Response) private readonly responseModel: Model<ResponseI>,
+    private readonly eventService: EventService,
+    private readonly userService: UserService,
   ) {}
 
   getAll() {
@@ -17,7 +25,13 @@ export class ResponseService {
     return this.responseModel.findOne({ eventID }).exec();
   }
 
-  async createResponse(eventID: string, userID: string) {
+  async createResponse(userID: string, eventID: string) {
+    const checkEvent = await this.eventService.getEvent(eventID);
+
+    if (!checkEvent) {
+      throw new NotFoundException('Not Found');
+    }
+
     let options = {
       new: true,
       upsert: true,
@@ -34,12 +48,10 @@ export class ResponseService {
 
     const response = await this.responseModel
       .findOne({
-        eventID: eventID,
+        eventID: checkEvent._id,
         'users.userID': userID,
       })
       .exec();
-
-    console.log(response);
 
     if (!response) {
       await this.responseModel.findOneAndUpdate(
@@ -47,9 +59,9 @@ export class ResponseService {
         { $push: { users: user } },
         options,
       );
-      return response;
-    } else {
-      throw new BadRequestException('User already joined.');
     }
+
+    await this.userService.addEvent(userID, checkEvent._id);
+    return { status: 0 };
   }
 }

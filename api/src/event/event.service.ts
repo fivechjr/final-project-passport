@@ -10,9 +10,11 @@ export class EventService {
     const createEvent = new this.eventModel(event);
     return await createEvent.save();
   }
+
   getEvent(id: string) {
     return this.eventModel.findById(id).exec();
   }
+
   getAll() {
     return this.eventModel.find().exec();
   }

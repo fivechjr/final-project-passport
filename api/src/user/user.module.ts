@@ -7,12 +7,14 @@ import { CryptoModule } from 'src/crypto/crypto.module';
 import { CryptoService } from 'src/crypto/crypto.service';
 import { ConfigModule } from 'src/config/config.module';
 import { ConfigService } from 'src/config/config.service';
+import { EventModule } from 'src/event/event.module';
 
 @Module({
   imports: [
     ConfigModule,
     MongooseModule.forFeature([{ name: User, schema: UserSchema }]),
     CryptoModule,
+    EventModule,
   ],
   controllers: [UserController],
   providers: [ConfigService, UserService, CryptoService],

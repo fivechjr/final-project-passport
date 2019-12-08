@@ -10,7 +10,7 @@ export class AuthMiddleware implements NestMiddleware {
   constructor(private readonly authService: AuthService) {}
   async use(req: any, res: any, next: () => void) {
     if (!req.headers.authorization) {
-      throw new UnauthorizedException('No JWT.');
+      throw new UnauthorizedException('No JWT');
     }
 
     const verify = await this.authService.decode(
@@ -18,7 +18,7 @@ export class AuthMiddleware implements NestMiddleware {
     );
 
     if (!verify) {
-      throw new UnauthorizedException('Invalid JWT.');
+      throw new UnauthorizedException('Invalid JWT');
     }
 
     req.userID = verify.userID;

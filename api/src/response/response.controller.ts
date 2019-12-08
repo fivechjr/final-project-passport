@@ -1,5 +1,6 @@
 import { Controller, Post, Param, Get } from '@nestjs/common';
 import { ResponseService } from './response.service';
+import { UserID } from 'src/decorators/user.decorator';
 
 @Controller('response')
 export class ResponseController {
@@ -11,7 +12,10 @@ export class ResponseController {
   }
 
   @Post(':eventID')
-  async createResponse(@Param('eventID') eventID: string) {
-    return this.responseService.createResponse(eventID, eventID);
+  async createResponse(
+    @UserID() userID: string,
+    @Param('eventID') eventID: string,
+  ) {
+    return this.responseService.createResponse(userID, eventID);
   }
 }
