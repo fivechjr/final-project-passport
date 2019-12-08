@@ -34,6 +34,8 @@ import { EventController } from './event/event.controller';
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).forRoutes(UserController, EventController);
+    consumer
+      .apply(AuthMiddleware)
+      .forRoutes(UserController, ResponseController);
   }
 }
