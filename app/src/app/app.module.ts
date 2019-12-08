@@ -10,8 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RelativeTimePipe } from './@shared/pipes/relative-time.pipe';
-import { FormatDatePipe } from './@shared/pipes/format-date.pipe';
+import { AuthInterceptor } from './@shared/interceptors/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
     declarations: [AppComponent],
@@ -26,6 +26,7 @@ import { FormatDatePipe } from './@shared/pipes/format-date.pipe';
         StatusBar,
         SplashScreen,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     ],
     bootstrap: [AppComponent],
 })
