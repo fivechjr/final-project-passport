@@ -32,7 +32,7 @@ export class UserService {
   async createUser(user: Partial<UserI>) {
     const check = await this.getUserByStudentID(user.studentID);
     if (check) {
-      throw new BadRequestException('User already exists.');
+      throw new BadRequestException('Already Exists');
     }
 
     user.faculty = this.getFaculty(user.studentID);
@@ -71,6 +71,46 @@ export class UserService {
 
     user.events.push(eventID);
     const ret = await user.save();
+  }
+
+  async addBookmark(userID: string, eventID: string) {
+    const user = await this.userModel
+      .findOne({
+        _id: userID,
+      })
+      .exec();
+
+    if (!user) {
+      throw new NotFoundException('Not Found');
+    }
+
+    if (user.bookmarks.includes(eventID)) {
+      throw new BadRequestException('Conflict');
+    }
+
+    user.bookmarks.push(eventID);
+    const ret = await user.save();
+    return true;
+  }
+
+  async removeBookmark(userID: string, eventID: string) {
+    const user = await this.userModel
+      .findOne({
+        _id: userID,
+      })
+      .exec();
+
+    if (!user) {
+      throw new NotFoundException('Not Found');
+    }
+
+    if (!user.bookmarks.includes(eventID)) {
+      throw new BadRequestException('Conflict');
+    }
+
+    user.bookmarks.pull(eventID);
+    const ret = await user.save();
+    return true;
   }
 
   getFaculty(studentID: string) {
