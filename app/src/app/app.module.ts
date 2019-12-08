@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RelativeTimePipe } from './@shared/pipes/relative-time.pipe';
+import { FormatDatePipe } from './@shared/pipes/format-date.pipe';
 
 @NgModule({
     declarations: [AppComponent],

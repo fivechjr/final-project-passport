@@ -13,6 +13,7 @@ import { VerticalEventCardComponent } from './vertical-event-card/vertical-event
 import { TabItemComponent } from './tab-item/tab-item.component';
 import { APIService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RelativeTimePipe } from './pipes/relative-time.pipe';
 
 @NgModule({
     imports: [CommonModule, RouterModule, IonicModule, HttpClientModule],

@@ -27,7 +27,7 @@
                 [style.opacity]="(navigationBackground | async) ? '1' : '0'"
                 [style.transition]="'all .75s'"
             >
-                Blognone Tomorrow 2019
+                {{ event.title }}
             </p>
         </div>
     </header>
@@ -45,7 +45,7 @@
         <header class="py-6 flex justify-between font-sans">
             <app-page-title
                 [title]="event.title"
-                [subtitle]="event.startDate"
+                [subtitle]="event.startDate | relativeTime"
             ></app-page-title>
         </header>
         <div class="mb-6 flex flex-col font-copy">
@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="mb-6">
-            <app-button></app-button>
+            <app-button [backgroundColor]="event.interfaceColor"></app-button>
         </div>
         <div class="mb-6">
             <section-text

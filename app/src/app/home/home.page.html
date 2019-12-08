@@ -22,7 +22,7 @@
             <app-vertical-event-card
                 *ngFor="let event of listing; let i = index"
                 [posterImage]="event.posterImage"
-                [date]="event.startDate"
+                [date]="event.startDate | formatDate"
                 [title]="event.title"
                 [faculty]="event.location.faculty"
                 [id]="event._id"

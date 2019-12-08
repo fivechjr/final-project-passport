@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { SharedModule } from '../@shared/shared.module';
+import { FormatDatePipe } from '../@shared/pipes/format-date.pipe';
 
 @NgModule({
     imports: [
@@ -20,6 +21,6 @@ import { SharedModule } from '../@shared/shared.module';
             },
         ]),
     ],
-    declarations: [HomePage],
+    declarations: [HomePage, FormatDatePipe],
 })
 export class HomePageModule {}
