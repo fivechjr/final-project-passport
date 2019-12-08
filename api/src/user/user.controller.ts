@@ -1,6 +1,7 @@
 import { Controller, Post, Body, Get, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDTO } from './user.dto';
+import { UserID } from 'src/decorators/user.decorator';
 
 @Controller('user')
 export class UserController {
@@ -9,6 +10,11 @@ export class UserController {
   @Get('')
   getAll() {
     return this.userService.getAll();
+  }
+
+  @Get('ping')
+  ping(@UserID() userID: string) {
+    return userID;
   }
 
   @Post('')

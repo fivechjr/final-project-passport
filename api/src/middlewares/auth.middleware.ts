@@ -9,8 +9,6 @@ import { AuthService } from 'src/auth/auth.service';
 export class AuthMiddleware implements NestMiddleware {
   constructor(private readonly authService: AuthService) {}
   async use(req: any, res: any, next: () => void) {
-    console.log('AuthMiddleware', req.headers.authorization);
-
     if (!req.headers.authorization) {
       throw new UnauthorizedException('No JWT.');
     }
@@ -22,6 +20,8 @@ export class AuthMiddleware implements NestMiddleware {
     if (!verify) {
       throw new UnauthorizedException('Invalid JWT.');
     }
+
+    req.userID = verify.userID;
 
     next();
   }
