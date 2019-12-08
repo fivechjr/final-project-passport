@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class HomePage implements OnInit {
     private listing$: Observable<any>;
+    public today: Date = new Date();
     constructor(private service: APIService) {}
     ngOnInit() {
         this.listing$ = this.service.get<any>('/event');

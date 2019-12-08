@@ -14,6 +14,7 @@ import { TabItemComponent } from './tab-item/tab-item.component';
 import { APIService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RelativeTimePipe } from './pipes/relative-time.pipe';
+import { FormatDatePipe } from './pipes/format-date.pipe';
 
 @NgModule({
     imports: [CommonModule, RouterModule, IonicModule, HttpClientModule],
@@ -28,6 +29,8 @@ import { RelativeTimePipe } from './pipes/relative-time.pipe';
         ScheduleComponent,
         VerticalEventCardComponent,
         TabItemComponent,
+        FormatDatePipe,
+        RelativeTimePipe,
     ],
     exports: [
         ButtonComponent,
@@ -39,6 +42,8 @@ import { RelativeTimePipe } from './pipes/relative-time.pipe';
         ScheduleComponent,
         VerticalEventCardComponent,
         TabItemComponent,
+        FormatDatePipe,
+        RelativeTimePipe,
     ],
 })
 export class SharedModule {}

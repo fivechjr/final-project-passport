@@ -12,6 +12,7 @@ import { SectionTextComponent } from './components/section-text/section-text.com
 import { EventInfoComponent } from './components/event-info/event-info.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { RelativeTimePipe } from '../@shared/pipes/relative-time.pipe';
+import { FormatDatePipe } from '../@shared/pipes/format-date.pipe';
 
 @NgModule({
     imports: [
@@ -26,7 +27,6 @@ import { RelativeTimePipe } from '../@shared/pipes/relative-time.pipe';
         SectionTextComponent,
         EventInfoComponent,
         ScheduleComponent,
-        RelativeTimePipe,
     ],
     exports: [PerEventPage],
 })

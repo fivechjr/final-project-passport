@@ -1,6 +1,9 @@
 <app-frame>
     <header class="py-6 flex justify-between font-sans">
-        <app-page-title></app-page-title>
+        <app-page-title
+            [subtitle]="today | formatDate"
+            title="New Events"
+        ></app-page-title>
         <!-- // Search Icon -->
         <div class="flex items-center">
             <div

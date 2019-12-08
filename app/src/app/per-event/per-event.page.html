@@ -51,8 +51,8 @@
         <div class="mb-6 flex flex-col font-copy">
             <div class="pb-2 border-b">
                 <event-info
-                    title="Thursday, 13 April 2019"
-                    subtitle="13:00 - 15:00"
+                    [title]="event.startDate | formatDate"
+                    [subtitle]="event.schedules[0].startTime + ' - ' + event.schedules[0].endTime"
                     icon="time"
                 ></event-info>
             </div>
@@ -81,10 +81,16 @@
             ></section-text>
         </div>
 
-        <div class="pt-6 mb-6 border-t">
-            <schedule></schedule>
+        <div
+            class="pt-6 mb-6 border-t"
+            *ngFor="let s of event.schedules; let i = index"
+        >
+            <p class="text-sm mb-4 font-medium">
+                {{ s.date | formatDate }}
+            </p>
+            <schedule [data]="s.schedule"></schedule>
         </div>
-        <div class="flex justify-center">
+        <div class="flex justify-center pt-6 border-t">
             <app-expand-button
                 icon="bookmark"
                 title="Save Event"
