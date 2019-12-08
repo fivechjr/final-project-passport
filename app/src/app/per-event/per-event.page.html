@@ -46,113 +46,48 @@
             <app-page-title></app-page-title>
         </header>
         <div class="mb-6 flex flex-col font-copy">
-            <div class="pb-2 border-b flex flex-row items-center">
-                <div class="flex" style="width: 30px">
-                    <ion-icon
-                        class="text-xl text-gray-400"
-                        name="time"
-                        mode="ios"
-                    ></ion-icon>
-                </div>
-                <div class="flex flex-col">
-                    <p class="text-sm">
-                        Tuesday, 27 November 2019
-                    </p>
-                    <p class="text-xs font-sans tracking-wide text-gray-600">
-                        13:00 - 19:00
-                    </p>
-                </div>
+            <div class="pb-2 border-b">
+                <event-info
+                    title="Thursday, 13 April 2019"
+                    subtitle="13:00 - 15:00"
+                    icon="time"
+                ></event-info>
             </div>
-            <div class="py-2 border-b flex flex-row items-center">
-                <div class="flex" style="width: 30px">
-                    <ion-icon
-                        class="text-xl text-gray-400"
-                        name="navigate"
-                        mode="ios"
-                    ></ion-icon>
-                </div>
-                <div class="flex flex-col">
-                    <p class="text-sm">
-                        Auditorium
-                    </p>
-                    <p class="text-xs font-sans tracking-wide text-gray-600">
-                        Faculty of Engineering
-                    </p>
-                </div>
+            <div class="py-2 border-b">
+                <event-info
+                    title="Main Auditorium"
+                    subtitle="Faculty of Engineering"
+                    icon="navigate"
+                ></event-info>
             </div>
-            <div class="pt-2 flex flex-row items-center">
-                <div class="flex" style="width: 30px">
-                    <ion-icon
-                        class="text-xl text-gray-400"
-                        name="people"
-                        mode="ios"
-                    ></ion-icon>
-                </div>
-                <div class="flex flex-col">
-                    <p class="text-sm">
-                        International School of Engineering
-                    </p>
-                    <p class="text-xs font-sans tracking-wide text-gray-600">
-                        Event Organizer
-                    </p>
-                </div>
+            <div class="pt-2">
+                <event-info
+                    title="International School of Engineering"
+                    subtitle="Event Organizer"
+                    icon="people"
+                ></event-info>
             </div>
         </div>
         <div class="mb-6">
-            <button
-                class="w-full p-3 text-xs font-sans tracking-widest text-white bg-blue-600 rounded-lg shadow-xl"
-            >
-                JOIN EVENT
-            </button>
+            <app-button></app-button>
         </div>
         <div class="mb-6">
-            <p
-                class="text-xs font-sans text-gray-600 tracking-widest leading-none mb-4"
-            >
-                DESCRIPTION
-            </p>
-            <p class="text-sm leading-wide">
-                JavaScript Bangkok 1.0.0 is an independently organized,
-                single-day, single-track conference about everything JavaScript
-                where both local and international JavaScript communities unite
-                and learn from each other.
-            </p>
+            <section-text
+                title="DESCRIPTION"
+                text="JavaScript Bangkok 1.0.0 is an independently organized, single-day,
+            single-track conference about everything JavaScript where both local and
+            international JavaScript communities unite and learn from each other."
+            ></section-text>
         </div>
 
         <div class="pt-6 mb-6 border-t">
-            <div class="schedule-grid text-sm font-copy">
-                <p
-                    class="text-xs font-sans text-gray-600 tracking-widest leading-none"
-                >
-                    TIME
-                </p>
-                <p
-                    class="text-xs font-sans text-gray-600  tracking-widest leading-none"
-                >
-                    AGENDA
-                </p>
-                <p>18:00</p>
-                <p>Doors Open</p>
-                <p>18:30</p>
-                <p class="font-semibold">Welcome speach by organizer</p>
-                <p>18:40</p>
-                <p>Guest talk by Scott Savarie</p>
-            </div>
+            <schedule></schedule>
         </div>
         <div class="flex justify-center">
-            <button
-                class="flex items-center flex-row p-2 rounded bg-white shadow-xl"
-            >
-                <ion-icon
-                    class="text-normal text-gray-400 mr-2"
-                    name="bookmark"
-                    mode="ios"
-                ></ion-icon>
-                <span
-                    class="text-xs font-sans tracking-widest text-gray-600 leading-none"
-                    >SAVE EVENT</span
-                >
-            </button>
+            <app-expand-button
+                icon="bookmark"
+                title="Save Event"
+            ></app-expand-button>
         </div>
     </main>
 </app-frame>

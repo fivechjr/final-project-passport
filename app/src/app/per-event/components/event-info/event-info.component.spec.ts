@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TabItemComponent } from './tab-item.component';
+import { EventInfoComponent } from './event-info.component';
 
-describe('TabItemComponent', () => {
-    let component: TabItemComponent;
-    let fixture: ComponentFixture<TabItemComponent>;
+describe('EventInfoComponent', () => {
+    let component: EventInfoComponent;
+    let fixture: ComponentFixture<EventInfoComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [TabItemComponent],
+            declarations: [EventInfoComponent],
             imports: [IonicModule.forRoot()],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(TabItemComponent);
+        fixture = TestBed.createComponent(EventInfoComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     }));

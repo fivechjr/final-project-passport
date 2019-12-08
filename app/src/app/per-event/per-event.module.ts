@@ -8,6 +8,9 @@ import { PerEventPageRoutingModule } from './per-event-routing.module';
 
 import { PerEventPage } from './per-event.page';
 import { SharedModule } from '../@shared/shared.module';
+import { SectionTextComponent } from './components/section-text/section-text.component';
+import { EventInfoComponent } from './components/event-info/event-info.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
 
 @NgModule({
     imports: [
@@ -17,7 +20,12 @@ import { SharedModule } from '../@shared/shared.module';
         PerEventPageRoutingModule,
         SharedModule,
     ],
-    declarations: [PerEventPage],
+    declarations: [
+        PerEventPage,
+        SectionTextComponent,
+        EventInfoComponent,
+        ScheduleComponent,
+    ],
     exports: [PerEventPage],
 })
 export class PerEventPageModule {}

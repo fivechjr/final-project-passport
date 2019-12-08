@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TabItemComponent } from './tab-item.component';
+import { SectionTextComponent } from './section-text.component';
 
-describe('TabItemComponent', () => {
-    let component: TabItemComponent;
-    let fixture: ComponentFixture<TabItemComponent>;
+describe('SectionTextComponent', () => {
+    let component: SectionTextComponent;
+    let fixture: ComponentFixture<SectionTextComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [TabItemComponent],
+            declarations: [SectionTextComponent],
             imports: [IonicModule.forRoot()],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(TabItemComponent);
+        fixture = TestBed.createComponent(SectionTextComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     }));

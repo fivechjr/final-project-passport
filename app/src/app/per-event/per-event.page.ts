@@ -9,7 +9,7 @@ import { Subject, BehaviorSubject } from 'rxjs';
 })
 export class PerEventPage implements OnInit {
     public navigationBackground: BehaviorSubject<boolean>;
-    public fallbackBackground: string = '#dfdfdf';
+    public fallbackBackground: string = '#3182ce';
 
     @HostListener('window:scroll', ['$event']) onScrollEvent($event) {
         const scrollTop = $event.target.scrollingElement.scrollTop;
