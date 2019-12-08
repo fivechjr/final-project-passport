@@ -43,7 +43,7 @@ export const EventSchema = new Schema({
   organizer: String,
   schedules: [
     {
-      date: String,
+      date: Date,
       startTime: String,
       endTime: String,
       schedule: [
