@@ -1,0 +1,27 @@
+version: "3.2"
+services:
+  api:
+    container_name: cu-passport-api
+    image: node:12-alpine
+    depends_on:
+      - mongo
+    restart: always
+    volumes:
+      - ./api:/app
+    ports:
+      - 3000:3000
+    environment:
+      MONGO_URL: mongodb://mongo/cu-passport
+      SECRET: secret
+      NODE_ENV: development
+    working_dir: /app
+    command: ["yarn", "start:dev"]
+  mongo:
+    container_name: cu-passport-mongo
+    image: mongo
+    restart: always
+    volumes:
+      - ./volumes/mongodb:/data/db
+      - ./volumes/mongodb_config:/data/configdb
+    ports:
+      - 27017:27017
