@@ -59,11 +59,11 @@ export class PerEventPage implements OnInit {
         return 150 < a * 0.299 + b * 0.587 + c * 0.114 ? '#000' : '#fff';
     }
 
-    joinEvent() {
-        console.log('joinEvent()');
-        const a = this.service.post<any>('/response/' + this.eventID);
-        a.subscribe(v => {
-            console.log(v);
-        });
+    async joinEvent() {
+        this.service.post<any>('/response/' + this.eventID).subscribe();
+    }
+
+    async addBookmark() {
+        this.service.post<any>('/user/bookmark/' + this.eventID).subscribe();
     }
 }
