@@ -1,0 +1,17 @@
+<div
+    [routerLink]="link"
+    class="h-full cursor-pointer flex flex-col items-center justify-center"
+>
+    <ion-icon
+        class="text-xl text-gray-600"
+        routerLinkActive="text-blue-600"
+        [name]="icon"
+        mode="ios"
+    ></ion-icon>
+    <p
+        class="mt-1 text-2xs text-gray-500 font-sans leading-none"
+        routerLinkActive="text-blue-500"
+    >
+        {{ title }}
+    </p>
+</div>

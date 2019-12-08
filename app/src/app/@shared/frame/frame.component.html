@@ -10,74 +10,22 @@
         *ngIf="withFooter"
         class="select-none footer-grid-container text-black w-full fixed bottom-0 bg-white z-20"
     >
-        <div
-            routerLink="/events"
-            class="cursor-pointer flex flex-col items-center justify-center"
-        >
-            <ion-icon
-                class="text-xl text-gray-600"
-                routerLinkActive="text-blue-600"
-                name="flash"
-                mode="ios"
-            ></ion-icon>
-            <p
-                class="mt-1 text-2xs text-gray-500 font-sans leading-none"
-                routerLinkActive="text-blue-500"
-            >
-                Events
-            </p>
-        </div>
-        <div
-            routerLink="/wallet"
-            class="cursor-pointer flex flex-col items-center justify-center"
-        >
-            <ion-icon
-                class="text-xl text-gray-600"
-                routerLinkActive="text-blue-600"
-                name="wallet"
-                mode="ios"
-            ></ion-icon>
-            <p
-                class="mt-1 text-2xs text-gray-500 font-sans leading-none"
-                routerLinkActive="text-blue-500"
-            >
-                Wallet
-            </p>
-        </div>
-        <div
-            routerLink="/saved"
-            class="cursor-pointer flex flex-col items-center justify-center "
-        >
-            <ion-icon
-                class="text-xl text-gray-600"
-                routerLinkActive="text-blue-600"
-                name="bookmark"
-                mode="ios"
-            ></ion-icon>
-            <p
-                class="mt-1 text-2xs text-gray-500 font-sans leading-none"
-                routerLinkActive="text-blue-500"
-            >
-                Saved
-            </p>
-        </div>
-        <div
-            routerLink="/settings"
-            class="cursor-pointer flex flex-col items-center justify-center border-blue-600"
-        >
-            <ion-icon
-                class="text-xl text-gray-600"
-                routerLinkActive="text-blue-600"
-                name="cog"
-                mode="ios"
-            ></ion-icon>
-            <p
-                class="mt-1 text-2xs text-gray-500 font-sans leading-none"
-                routerLinkActive="text-blue-500"
-            >
-                Settings
-            </p>
-        </div>
+        <app-tab-item link="/events" icon="flash" title="Events"></app-tab-item>
+        <app-tab-item
+            link="/wallet"
+            icon="wallet"
+            title="Wallet"
+        ></app-tab-item>
+        <app-tab-item
+            link="/saved"
+            icon="bookmark"
+            title="Saved"
+        ></app-tab-item>
+        <app-tab-item
+            link="/settings"
+            icon="cog"
+            title="Settings"
+        ></app-tab-item>
     </div>
     <div class="mx-6">
         <ng-content></ng-content>

@@ -10,6 +10,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { PageTitleComponent } from './page-title/page-title.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { VerticalEventCardComponent } from './vertical-event-card/vertical-event-card.component';
+import { TabItemComponent } from './tab-item/tab-item.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, IonicModule],
@@ -22,6 +23,7 @@ import { VerticalEventCardComponent } from './vertical-event-card/vertical-event
         PageTitleComponent,
         ScheduleComponent,
         VerticalEventCardComponent,
+        TabItemComponent,
     ],
     exports: [
         ButtonComponent,
@@ -32,6 +34,7 @@ import { VerticalEventCardComponent } from './vertical-event-card/vertical-event
         PageTitleComponent,
         ScheduleComponent,
         VerticalEventCardComponent,
+        TabItemComponent,
     ],
 })
 export class SharedModule {}
