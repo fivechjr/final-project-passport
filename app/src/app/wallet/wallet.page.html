@@ -1,101 +1,10 @@
 <app-frame [backgroundColor]="'#fff'">
-    <header class="-mx-6 px-6 sticky shadow-2xl z-20" style="top: 20px">
-        <div class="flex flex-row items-center">
-            <p class="font-sans text-sm py-4 bg-transparent w-full">
-                My Wallet
-            </p>
-        </div>
-    </header>
+    <app-navigation-bar title="My Wallet"></app-navigation-bar>
     <div class="mt-6">
-        <div class="relative flex flex-col bg-white rounded shadow-xl mb-6">
-            <div
-                class="relative w-full rounded-tl rounded-tr"
-                style="height: 120px; overflow: hidden"
-            >
-                <img
-                    class="absolute"
-                    src="https://p-u.popcdn.net/events/poster_a4s/000/006/100/large/KV-cover_800x1132px_%281%29.jpg?1564484567"
-                    alt=""
-                />
-            </div>
-            <div class="px-6 py-4 flex items-baseline">
-                <div class="flex flex-col mr-4">
-                    <p
-                        class="text-xs font-sans font-semibold text-black tracking-widest leading-none"
-                    >
-                        13
-                    </p>
-                    <p
-                        class="text-2xs font-sans font-semibold text-red-600 tracking-widest leading-none mt-1"
-                    >
-                        DEC
-                    </p>
-                </div>
-
-                <div class="flex flex-col">
-                    <p class="text-sm text-black truncate">
-                        Blognone Tomorrow 2019
-                    </p>
-                    <p
-                        class="text-2xs tracking-wide font-sans tracking-widest text-black uppercase"
-                    >
-                        Engineering
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="relative flex flex-col bg-white rounded shadow-xl mb-6">
-            <div
-                class="relative w-full rounded-tl rounded-tr"
-                style="height: 120px; overflow: hidden"
-            >
-                <img
-                    class="absolute"
-                    src="https://p-u.popcdn.net/events/poster_a4s/000/007/535/large/FB_feed-100.jpg?1574305139"
-                    style="left: 50%; top: 50%; transform: translate(-50%, -50%);"
-                    alt=""
-                />
-            </div>
-            <div class="px-6 py-4 flex items-baseline">
-                <div class="flex flex-col mr-4">
-                    <p
-                        class="text-xs font-sans font-semibold text-black tracking-widest leading-none"
-                    >
-                        13
-                    </p>
-                    <p
-                        class="text-2xs font-sans font-semibold text-red-600 tracking-widest leading-none mt-1"
-                    >
-                        DEC
-                    </p>
-                </div>
-
-                <div class="flex flex-col">
-                    <p class="text-sm text-black truncate">
-                        Blognone Tomorrow 2019
-                    </p>
-                    <p
-                        class="text-2xs tracking-wide font-sans tracking-widest text-black uppercase"
-                    >
-                        Engineering
-                    </p>
-                </div>
-            </div>
-        </div>
+        <app-horizontal-event-card></app-horizontal-event-card>
+        <app-horizontal-event-card></app-horizontal-event-card>
         <div class="flex justify-center">
-            <button
-                class="flex items-center flex-row p-2 rounded bg-white shadow-xl"
-            >
-                <ion-icon
-                    class="text-normal text-gray-400 mr-2"
-                    name="arrow-down"
-                    mode="ios"
-                ></ion-icon>
-                <span
-                    class="text-xs font-sans tracking-widest text-gray-600 leading-none"
-                    >VIEW PAST EVENTS</span
-                >
-            </button>
+            <app-expand-button title="View Past Events"></app-expand-button>
         </div>
     </div>
 </app-frame>

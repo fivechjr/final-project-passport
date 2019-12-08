@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'app-expand-button',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./expand-button.component.scss'],
 })
 export class ExpandButtonComponent implements OnInit {
+    @Input() title: string = 'EXPAND';
+    @Input() icon: string = 'arrow-down';
+
     constructor() {}
 
     ngOnInit() {}

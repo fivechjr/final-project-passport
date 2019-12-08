@@ -1,3 +1,11 @@
-<p>
-  expand-button works!
-</p>
+<button class="flex items-center flex-row p-2 rounded bg-white shadow-xl">
+    <ion-icon
+        class="text-normal text-gray-400 mr-2"
+        [name]="icon"
+        mode="ios"
+    ></ion-icon>
+    <span
+        class="text-xs font-sans tracking-widest text-gray-600 leading-none uppercase"
+        >{{ title }}</span
+    >
+</button>
