@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
@@ -8,6 +8,8 @@ import { ResponseModule } from './response/response.module';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
 import { MongooseModule } from '@nestjs/mongoose';
+import { CryptoModule } from './crypto/crypto.module';
+import { AuthMiddleware } from './middlewares/auth.middleware';
 
 @Module({
   imports: [
@@ -22,8 +24,13 @@ import { MongooseModule } from '@nestjs/mongoose';
       }),
       inject: [ConfigService],
     }),
+    CryptoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(AuthMiddleware).forRoutes('*');
+  }
+}

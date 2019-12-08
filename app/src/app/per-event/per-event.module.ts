@@ -11,8 +11,6 @@ import { SharedModule } from '../@shared/shared.module';
 import { SectionTextComponent } from './components/section-text/section-text.component';
 import { EventInfoComponent } from './components/event-info/event-info.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
-import { RelativeTimePipe } from '../@shared/pipes/relative-time.pipe';
-import { FormatDatePipe } from '../@shared/pipes/format-date.pipe';
 
 @NgModule({
     imports: [
