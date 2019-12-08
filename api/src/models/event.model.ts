@@ -20,7 +20,7 @@ export interface EventI {
   startDate: string;
   endDate: string;
   posterImage: string;
-  interfaceColor: string;
+  backgroundColor: string;
   location: {
     faculty: string;
     building: string;
@@ -35,7 +35,7 @@ export const EventSchema = new Schema({
   startDate: Date,
   endDate: Date,
   posterImage: String,
-  interfaceColor: String,
+  backgroundColor: String,
   location: {
     faculty: String,
     building: String,

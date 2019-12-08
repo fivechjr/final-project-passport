@@ -1,13 +1,13 @@
 <app-frame
     *ngIf="event$ | async as event"
     [withFooter]="false"
-    [backgroundColor]="event.interfaceColor"
+    [backgroundColor]="event.backgroundColor"
 >
     <header
         id="header"
         class="-mx-6 px-6 w-full fixed z-10"
-        [style.color]="getNavigationBarTextColor(event.interfaceColor)"
-        [style.background]="(navigationBackground | async) ? event.interfaceColor : 'transparent'"
+        [style.color]="getNavigationBarTextColor(event.backgroundColor)"
+        [style.background]="(navigationBackground | async) ? event.backgroundColor : 'transparent'"
         [ngStyle]="{'box-shadow': (navigationBackground | async) ? '0 25px 50px 0px rgba(0, 0, 0, 0.25)' : 'none'}"
     >
         <div class="flex flex-row items-center">
@@ -74,7 +74,7 @@
         <div class="mb-6">
             <app-button
                 (click)="joinEvent()"
-                [backgroundColor]="event.interfaceColor"
+                [backgroundColor]="event.backgroundColor"
             ></app-button>
         </div>
         <div class="mb-6">

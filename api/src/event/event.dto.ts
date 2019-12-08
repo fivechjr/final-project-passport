@@ -6,7 +6,7 @@ export class CreateEventDTO implements EventI {
   startDate: string;
   endDate: string;
   posterImage: string;
-  interfaceColor: string;
+  backgroundColor: string;
   location: {
     faculty: string;
     building: string;

@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Response } from 'src/models/response.model';
+import { Response, ResponseI } from 'src/models/response.model';
 import { InjectModel } from '@nestjs/mongoose';
-import { EventI } from 'src/models/event.model';
-import { Model, mongo } from 'mongoose';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class ResponseService {
