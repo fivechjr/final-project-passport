@@ -10,6 +10,9 @@ import { ConfigService } from './config/config.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CryptoModule } from './crypto/crypto.module';
 import { AuthMiddleware } from './middlewares/auth.middleware';
+import { UserController } from './user/user.controller';
+import { ResponseController } from './response/response.controller';
+import { EventController } from './event/event.controller';
 
 @Module({
   imports: [
@@ -31,6 +34,6 @@ import { AuthMiddleware } from './middlewares/auth.middleware';
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).forRoutes('*');
+    consumer.apply(AuthMiddleware).forRoutes(UserController, EventController);
   }
 }

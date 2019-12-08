@@ -30,12 +30,7 @@ export class AuthService {
   }
 
   async decode(token: string): Promise<any> {
-    try {
-      const result = this.jwtService.decode(token);
-      return result;
-    } catch (error) {
-      throw new UnauthorizedException('Invalid JWT.');
-    }
+    return this.jwtService.decode(token);
   }
 
   async canActivate(token) {
