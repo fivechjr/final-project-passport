@@ -2,7 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Location } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { APIService } from '../@shared/services/api.service';
+import { HTTPService } from '../@shared/services/http.service';
 
 @Component({
     selector: 'app-per-event',
@@ -29,7 +29,7 @@ export class PerEventPage implements OnInit {
     constructor(
         private location: Location,
         private route: ActivatedRoute,
-        private service: APIService,
+        private service: HTTPService,
     ) {
         this.navigationBackground = new BehaviorSubject(false);
     }

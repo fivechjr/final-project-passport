@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root',
 })
-export class APIService {
+export class HTTPService {
     static ROOT = 'http://localhost:3000';
 
     constructor(private http: HttpClient) {}
@@ -16,7 +16,7 @@ export class APIService {
         params?: { [param: string]: string | string[] },
     ): Observable<T> {
         return this.http
-            .get<T>(APIService.ROOT + url, { params, observe: 'response' })
+            .get<T>(HTTPService.ROOT + url, { params, observe: 'response' })
             .pipe(map(res => res.body));
     }
 
@@ -24,8 +24,8 @@ export class APIService {
         url: string,
         params?: { [param: string]: string | string[] },
     ): Observable<T> {
-        return this.http.post<T>(APIService.ROOT + url, {
-            params,
+        return this.http.post<T>(HTTPService.ROOT + url, {
+            ...params,
             observe: 'response',
         });
     }
@@ -35,7 +35,7 @@ export class APIService {
         params?: { [param: string]: string | string[] },
     ): Observable<T> {
         return this.http
-            .patch<T>(APIService.ROOT + url, { params, observe: 'response' })
+            .patch<T>(HTTPService.ROOT + url, { params, observe: 'response' })
             .pipe(map(res => res));
     }
 
@@ -44,7 +44,7 @@ export class APIService {
         params?: { [param: string]: string | string[] },
     ): Observable<T> {
         return this.http
-            .delete<T>(APIService.ROOT + url, { params, observe: 'response' })
+            .delete<T>(HTTPService.ROOT + url, { params, observe: 'response' })
             .pipe(map(res => res.body));
     }
 }
