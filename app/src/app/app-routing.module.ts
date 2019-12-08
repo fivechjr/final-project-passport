@@ -29,7 +29,7 @@ const routes: Routes = [
         },
     },
     {
-        path: 'per-event',
+        path: 'per-event/:id',
         component: PerEventPage,
         pathMatch: 'full',
         data: {

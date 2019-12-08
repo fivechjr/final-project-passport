@@ -11,9 +11,11 @@ import { PageTitleComponent } from './page-title/page-title.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { VerticalEventCardComponent } from './vertical-event-card/vertical-event-card.component';
 import { TabItemComponent } from './tab-item/tab-item.component';
+import { APIService } from './services/api-service.service';
 
 @NgModule({
     imports: [CommonModule, RouterModule, IonicModule],
+    providers: [APIService],
     declarations: [
         ButtonComponent,
         ExpandButtonComponent,
@@ -35,6 +37,7 @@ import { TabItemComponent } from './tab-item/tab-item.component';
         ScheduleComponent,
         VerticalEventCardComponent,
         TabItemComponent,
+        APIService,
     ],
 })
 export class SharedModule {}
