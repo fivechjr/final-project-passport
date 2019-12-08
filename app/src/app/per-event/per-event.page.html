@@ -72,7 +72,10 @@
             </div>
         </div>
         <div class="mb-6">
-            <app-button [backgroundColor]="event.interfaceColor"></app-button>
+            <app-button
+                (click)="joinEvent()"
+                [backgroundColor]="event.interfaceColor"
+            ></app-button>
         </div>
         <div class="mb-6">
             <section-text

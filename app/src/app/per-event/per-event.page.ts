@@ -58,4 +58,12 @@ export class PerEventPage implements OnInit {
         const { r: a, g: b, b: c } = this.toRGB(color);
         return 150 < a * 0.299 + b * 0.587 + c * 0.114 ? '#000' : '#fff';
     }
+
+    joinEvent() {
+        console.log('joinEvent()');
+        const a = this.service.post<any>('/response/' + this.eventID);
+        a.subscribe(v => {
+            console.log(v);
+        });
+    }
 }

@@ -1,18 +1,17 @@
-import { Controller, Post, Param } from '@nestjs/common';
+import { Controller, Post, Param, Get } from '@nestjs/common';
 import { ResponseService } from './response.service';
 
 @Controller('response')
 export class ResponseController {
   constructor(private readonly responseService: ResponseService) {}
 
+  @Get('')
+  getAll() {
+    return this.responseService.getAll();
+  }
+
   @Post(':eventID')
-  createResponse(@Param('eventID') eventID: string) {
-    // Check:
-    const response = this.responseService.getByEventID(eventID);
-    if (response) {
-      // Yes
-    } else {
-      // No
-    }
+  async createResponse(@Param('eventID') eventID: string) {
+    return this.responseService.createResponse(eventID, eventID);
   }
 }
