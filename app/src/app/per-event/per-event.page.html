@@ -1,9 +1,13 @@
-<app-frame [withFooter]="false" [backgroundColor]="fallbackBackground">
+<app-frame
+    *ngIf="event$ | async as event"
+    [withFooter]="false"
+    [backgroundColor]="event.interfaceColor"
+>
     <header
         id="header"
         class="-mx-6 px-6 w-full fixed z-10"
-        [style.color]="getNavigationBarTextColor(fallbackBackground)"
-        [style.background]="(navigationBackground | async) ? fallbackBackground : 'transparent'"
+        [style.color]="getNavigationBarTextColor(event.interfaceColor)"
+        [style.background]="(navigationBackground | async) ? event.interfaceColor : 'transparent'"
         [ngStyle]="{'box-shadow': (navigationBackground | async) ? '0 25px 50px 0px rgba(0, 0, 0, 0.25)' : 'none'}"
     >
         <div class="flex flex-row items-center">
@@ -32,18 +36,17 @@
         <div class="-mx-6">
             <div
                 class="w-full"
-                [style.background]="fallbackBackground"
-                [style.height]="'200px'"
+                [style.background]="event.mainColor"
+                [style.minHeight]="'200px'"
             >
-                <img
-                    src="https:/d/p-u.popcdn.net/events/poster_a4s/000/006/100/large/KV-cover_800x1132px_%281%29.jpg?1564484567"
-                    alt=""
-                    class="w-full"
-                />
+                <img [src]="event.posterImage" alt="" class="w-full" />
             </div>
         </div>
         <header class="py-6 flex justify-between font-sans">
-            <app-page-title></app-page-title>
+            <app-page-title
+                [title]="event.title"
+                [subtitle]="event.startDate"
+            ></app-page-title>
         </header>
         <div class="mb-6 flex flex-col font-copy">
             <div class="pb-2 border-b">
@@ -55,14 +58,14 @@
             </div>
             <div class="py-2 border-b">
                 <event-info
-                    title="Main Auditorium"
-                    subtitle="Faculty of Engineering"
+                    [title]="event.location.building"
+                    [subtitle]="'Faculty of ' + event.location.faculty"
                     icon="navigate"
                 ></event-info>
             </div>
             <div class="pt-2">
                 <event-info
-                    title="International School of Engineering"
+                    [title]="event.organizer"
                     subtitle="Event Organizer"
                     icon="people"
                 ></event-info>
@@ -74,9 +77,7 @@
         <div class="mb-6">
             <section-text
                 title="DESCRIPTION"
-                text="JavaScript Bangkok 1.0.0 is an independently organized, single-day,
-            single-track conference about everything JavaScript where both local and
-            international JavaScript communities unite and learn from each other."
+                [text]="event.description"
             ></section-text>
         </div>
 

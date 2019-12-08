@@ -17,12 +17,16 @@
         </div>
         <!-- // Search Icon -->
     </header>
-    <section>
+    <section *ngIf="listing$ | async as listing">
         <div class="w-full grid-container">
-            <app-vertical-event-card></app-vertical-event-card>
-            <app-vertical-event-card></app-vertical-event-card>
-            <app-vertical-event-card></app-vertical-event-card>
-            <app-vertical-event-card></app-vertical-event-card>
+            <app-vertical-event-card
+                *ngFor="let event of listing; let i = index"
+                [posterImage]="event.posterImage"
+                [date]="event.startDate"
+                [title]="event.title"
+                [faculty]="event.location.faculty"
+                [id]="event._id"
+            ></app-vertical-event-card>
         </div>
     </section>
 </app-frame>
