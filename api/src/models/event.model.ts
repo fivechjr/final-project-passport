@@ -9,6 +9,8 @@ interface ScheduleI {
 
 interface E {
   date: string;
+  startTime: string;
+  endTime: string;
   schedule: ScheduleI[];
 }
 
@@ -42,6 +44,8 @@ export const EventSchema = new Schema({
   schedules: [
     {
       date: String,
+      startTime: String,
+      endTime: String,
       schedule: [
         {
           startTime: String,

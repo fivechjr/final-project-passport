@@ -15,6 +15,8 @@ export class CreateEventDTO implements EventI {
   schedules: [
     {
       date: string;
+      startTime: string;
+      endTime: string;
       schedule: [
         {
           startTime: string;
