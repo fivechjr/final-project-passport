@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import * as dayjs from 'dayjs';
 
 @Component({
     selector: 'app-vertical-event-card',
@@ -7,11 +8,22 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class VerticalEventCardComponent implements OnInit {
     @Input() posterImage: string;
-    @Input() date: string;
+    @Input() startDate: string;
+    @Input() endDate: string;
     @Input() title: string;
     @Input() faculty: string;
     @Input() id: string;
+
+    public isEnded: boolean = false;
+
     constructor() {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        let date = dayjs(this.endDate).startOf('day');
+        let today = dayjs().startOf('day');
+        let diff = today.diff(date, 'day');
+        if (date.isBefore(today) && diff >= 1) {
+            this.isEnded = true;
+        }
+    }
 }
