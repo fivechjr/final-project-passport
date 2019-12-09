@@ -22,7 +22,6 @@ export class AuthMiddleware implements NestMiddleware {
     }
 
     req.userID = verify.userID;
-
     next();
   }
 }

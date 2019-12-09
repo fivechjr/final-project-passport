@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = file("~/Desktop/GCP.json")
+  # credentials = file("~/Desktop/GCP.json")
 
   project = "final-project-passport"
   region  = "asia-southeast1"
