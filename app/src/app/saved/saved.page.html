@@ -1,10 +1,17 @@
 <app-frame [backgroundColor]="'#fff'">
     <app-navigation-bar title="Saved Events"></app-navigation-bar>
-    <div class="mt-6">
-        <app-horizontal-event-card></app-horizontal-event-card>
-        <app-horizontal-event-card></app-horizontal-event-card>
-        <div class="flex justify-center">
+    <section class="mt-6" *ngIf="listing$ | async as listing">
+        <app-horizontal-event-card
+            *ngFor="let event of listing; let i = index"
+            [posterImage]="event.posterImage"
+            [startDate]="event.startDate"
+            [endDate]="event.endDate"
+            [title]="event.title"
+            [faculty]="event.location.faculty"
+            [id]="event._id"
+        ></app-horizontal-event-card>
+        <!-- <div class="flex justify-center">
             <app-expand-button title="View Past Events"></app-expand-button>
-        </div>
-    </div>
+        </div> -->
+    </section>
 </app-frame>
