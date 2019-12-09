@@ -18,4 +18,32 @@ export class EventService {
   getAll() {
     return this.eventModel.find().exec();
   }
+
+  // async searchByEventTitle(key: string) {
+  //   if (!key) {
+  //     return this.getAll();
+  //   }
+
+  //   return this.eventModel
+  //     .find({
+  //       $text: {
+  //         $search: new RegExp(key, 'i'),
+  //       },
+  //     })
+  //     .limit(10)
+  //     .exec();
+  // }
+
+  async searchByEventTitle(key: string) {
+    if (!key) {
+      return this.getAll();
+    }
+
+    return this.eventModel
+      .find({
+        title: new RegExp(key, 'i'),
+      })
+      .limit(10)
+      .exec();
+  }
 }

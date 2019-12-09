@@ -55,3 +55,5 @@ export const EventSchema = new Schema({
     },
   ],
 });
+
+EventSchema.index({ title: 'text' });
