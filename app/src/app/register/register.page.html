@@ -1,9 +1,64 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-frame
+    [withFooter]="false"
+    [withBottomSpacing]="false"
+    backgroundColor="#ffffff"
+>
+    <section class="-mx-6 px-6 items-center flex" id="main">
+        <div class="w-full flex justify-center flex-col">
+            <div class="w-full flex flex-col mb-8">
+                <h1 class="text-center font-heading text-2xl leading-none">
+                    ลงทะเบียน
+                </h1>
+                <p
+                    class="text-center mt-4 text-2xs tracking-widest font-sans tracking-widest text-black uppercase"
+                >
+                    CREATE ACCOUNT
+                </p>
+            </div>
 
-<ion-content>
-
-</ion-content>
+            <div
+                class="flex self-center mb-8 border-b border-black"
+                style="width: 50px"
+            ></div>
+            <div class="px-3 w-full flex flex-col mb-8">
+                <input
+                    type="text"
+                    class="font-copy text-sm w-full px-3 py-2 rounded border focus:border-black flex justify-center items-center appearance-none mb-4"
+                    placeholder="First Name"
+                />
+                <input
+                    type="text"
+                    class="font-copy text-sm w-full px-3 py-2 rounded border focus:border-black flex justify-center items-center appearance-none mb-4"
+                    placeholder="Last Name"
+                />
+                <input
+                    type="text"
+                    class="font-copy text-sm w-full px-3 py-2 rounded border focus:border-black flex justify-center items-center appearance-none mb-4"
+                    placeholder="Student ID"
+                />
+                <input
+                    type="password"
+                    class="font-copy text-sm w-full px-3 py-2 rounded border focus:border-black flex justify-center items-center appearance-none"
+                    placeholder="Password"
+                />
+            </div>
+            <div class="px-3 mb-8">
+                <app-button
+                    title="CREATE ACCOUNT"
+                    backgroundColor="linear-gradient(140deg, #B24592, #F15F79)"
+                ></app-button>
+            </div>
+            <div class="px-3 flex justify-center">
+                <span class="text-sm">
+                    Already have an account?
+                    <a
+                        [routerLink]="['/auth']"
+                        class="cursor-pointer border-b font-semibold"
+                    >
+                        Sign In
+                    </a>
+                </span>
+            </div>
+        </div>
+    </section>
+</app-frame>
