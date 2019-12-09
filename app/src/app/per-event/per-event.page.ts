@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Location } from '@angular/common';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../@shared/services/api.service';
 import { AuthService } from '../@shared/services/auth.service';
@@ -13,7 +13,7 @@ import { AuthService } from '../@shared/services/auth.service';
 export class PerEventPage implements OnInit {
     public navigationBackground: BehaviorSubject<boolean>;
     public eventID: string;
-    public event$: Observable<any>;
+    public event$: Subject<any> = new Subject();
     public fallbackBackground: string = '#3182ce';
 
     @HostListener('window:scroll', ['$event']) onScrollEvent($event) {
@@ -38,8 +38,9 @@ export class PerEventPage implements OnInit {
 
     ngOnInit() {
         this.eventID = this.route.snapshot.paramMap.get('id');
-        this.event$ = this.service.get<any>('/event/' + this.eventID);
-        console.log(this.authService.userInfo$);
+        this.service.get<any>('/event/' + this.eventID).subscribe(v => {
+            this.event$.next(v);
+        });
     }
 
     goBack() {

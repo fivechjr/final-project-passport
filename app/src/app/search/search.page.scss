@@ -2,3 +2,10 @@ header {
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.125);
     background: #fff;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5rem; // mx-6
+    row-gap: 2rem;
+}

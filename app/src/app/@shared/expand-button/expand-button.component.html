@@ -1,11 +1,13 @@
 <button class="flex items-center flex-row p-2 rounded bg-white shadow-xl">
     <ion-icon
-        class="text-normal text-gray-400 mr-2"
+        class="text-normal mr-2"
+        [ngClass]="'text-' + color + '-400'"
         [name]="icon"
         mode="ios"
     ></ion-icon>
     <span
-        class="text-xs font-sans tracking-widest text-gray-600 leading-none uppercase"
+        class="text-xs font-sans tracking-widest leading-none uppercase"
+        [ngClass]="'text-' + color + '-600'"
         >{{ title }}</span
     >
 </button>

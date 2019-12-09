@@ -1,101 +1,99 @@
-<app-frame
-    *ngIf="event$ | async as event"
-    [withFooter]="false"
-    [backgroundColor]="event.backgroundColor"
->
-    <header
-        id="header"
-        class="-mx-6 px-6 w-full fixed z-10"
-        [style.color]="getNavigationBarTextColor(event.backgroundColor)"
-        [style.background]="(navigationBackground | async) ? event.backgroundColor : 'transparent'"
-        [ngStyle]="{'box-shadow': (navigationBackground | async) ? '0 25px 50px 0px rgba(0, 0, 0, 0.25)' : 'none'}"
-    >
-        <div class="flex flex-row items-center">
-            <div
-                (click)="goBack()"
-                class="flex items-center justify-center mr-3 cursor-pointer"
-            >
-                <ion-icon
-                    class="text-lg"
-                    name="arrow-back"
-                    mode="md"
-                ></ion-icon>
-            </div>
-            <p
-                class="font-sans text-sm py-4 bg-transparent w-full truncate"
-                [style.maxWidth]="(navigationBackground | async) ? '100%' : '0%'"
-                [style.opacity]="(navigationBackground | async) ? '1' : '0'"
-                [style.transition]="'all .75s'"
-            >
-                {{ event.title }}
-            </p>
-        </div>
-    </header>
-
-    <main>
-        <div class="-mx-6">
-            <div
-                class="w-full"
-                [style.background]="event.mainColor"
-                [style.minHeight]="'200px'"
-            >
-                <img [src]="event.posterImage" alt="" class="w-full" />
-            </div>
-        </div>
-        <header class="py-6 flex justify-between font-sans">
-            <app-page-title
-                [title]="event.title"
-                [subtitle]="event.startDate | relativeTime"
-            ></app-page-title>
-        </header>
-        <div class="mb-6 flex flex-col font-copy">
-            <div class="pb-2 border-b">
-                <event-info
-                    [title]="event.startDate | formatDate"
-                    [subtitle]="event.schedules[0].startTime + ' - ' + event.schedules[0].endTime"
-                    icon="time"
-                ></event-info>
-            </div>
-            <div class="py-2 border-b">
-                <event-info
-                    [title]="event.location.building"
-                    [subtitle]="'Faculty of ' + event.location.faculty"
-                    icon="navigate"
-                ></event-info>
-            </div>
-            <div class="pt-2">
-                <event-info
-                    [title]="event.organizer"
-                    subtitle="Event Organizer"
-                    icon="people"
-                ></event-info>
-            </div>
-        </div>
-        <div class="mb-6">
-            <join-event-button
-                [backgroundColor]="event.backgroundColor"
-                [eventID]="event._id"
-            >
-            </join-event-button>
-        </div>
-        <div class="mb-6">
-            <section-text
-                title="DESCRIPTION"
-                [text]="event.description"
-            ></section-text>
-        </div>
-
-        <div
-            class="pt-6 mb-6 border-t"
-            *ngFor="let s of event.schedules; let i = index"
+<ng-container *ngIf="event$ | async as event">
+    <app-frame [withFooter]="false" [backgroundColor]="event.backgroundColor">
+        <header
+            id="header"
+            class="-mx-6 px-6 w-full fixed z-10"
+            [style.color]="getNavigationBarTextColor(event.backgroundColor)"
+            [style.background]="(navigationBackground | async) ? event.backgroundColor : 'transparent'"
+            [ngStyle]="{'box-shadow': (navigationBackground | async) ? '0 25px 50px 0px rgba(0, 0, 0, 0.25)' : 'none'}"
         >
-            <p class="text-sm mb-4 font-medium">
-                {{ s.date | formatDate }}
-            </p>
-            <schedule [data]="s.schedule"></schedule>
-        </div>
-        <div class="flex justify-center pt-6 border-t">
-            <save-event-button [eventID]="event._id"></save-event-button>
-        </div>
-    </main>
-</app-frame>
+            <div class="flex flex-row items-center">
+                <div
+                    (click)="goBack()"
+                    class="flex items-center justify-center mr-3 cursor-pointer"
+                >
+                    <ion-icon
+                        class="text-lg"
+                        name="arrow-back"
+                        mode="md"
+                    ></ion-icon>
+                </div>
+                <p
+                    class="font-sans text-sm py-4 bg-transparent w-full truncate"
+                    [style.maxWidth]="(navigationBackground | async) ? '100%' : '0%'"
+                    [style.opacity]="(navigationBackground | async) ? '1' : '0'"
+                    [style.transition]="'all .75s'"
+                >
+                    {{ event.title }}
+                </p>
+            </div>
+        </header>
+
+        <main>
+            <div class="-mx-6">
+                <div
+                    class="w-full"
+                    [style.background]="event.mainColor"
+                    [style.minHeight]="'200px'"
+                >
+                    <img [src]="event.posterImage" alt="" class="w-full" />
+                </div>
+            </div>
+            <header class="py-6 flex justify-between font-sans">
+                <app-page-title
+                    [title]="event.title"
+                    [subtitle]="event.startDate | relativeTime"
+                ></app-page-title>
+            </header>
+            <div class="mb-6 flex flex-col font-copy">
+                <div class="pb-2 border-b">
+                    <event-info
+                        [title]="event.startDate | formatDate"
+                        [subtitle]="event.schedules[0].startTime + ' - ' + event.schedules[0].endTime"
+                        icon="time"
+                    ></event-info>
+                </div>
+                <div class="py-2 border-b">
+                    <event-info
+                        [title]="event.location.building"
+                        [subtitle]="'Faculty of ' + event.location.faculty"
+                        icon="navigate"
+                    ></event-info>
+                </div>
+                <div class="pt-2">
+                    <event-info
+                        [title]="event.organizer"
+                        subtitle="Event Organizer"
+                        icon="people"
+                    ></event-info>
+                </div>
+            </div>
+            <div class="mb-6">
+                <join-event-button
+                    [backgroundColor]="event.backgroundColor"
+                    [eventID]="event._id"
+                >
+                </join-event-button>
+            </div>
+            <div class="mb-6">
+                <section-text
+                    title="DESCRIPTION"
+                    [text]="event.description"
+                ></section-text>
+            </div>
+
+            <div
+                class="pt-6 mb-6 border-t"
+                *ngFor="let s of event.schedules; let i = index"
+            >
+                <p class="text-sm mb-4 font-medium">
+                    {{ s.date | formatDate }}
+                </p>
+                <schedule [data]="s.schedule"></schedule>
+            </div>
+            <div class="flex justify-center pt-6 border-t">
+                <save-event-button [eventID]="event._id"></save-event-button>
+            </div>
+        </main>
+    </app-frame>
+</ng-container>

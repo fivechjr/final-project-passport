@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../@shared/services/api.service';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-home',
@@ -8,10 +8,14 @@ import { Observable } from 'rxjs';
     styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-    private listing$: Observable<any>;
+    private listing$: BehaviorSubject<any>;
     public today: Date = new Date();
-    constructor(private service: ApiService) {}
+    constructor(private service: ApiService) {
+        this.listing$ = new BehaviorSubject([]);
+    }
     ngOnInit() {
-        this.listing$ = this.service.get<any>('/event');
+        this.service.get<any>('/event').subscribe(v => {
+            this.listing$.next(v);
+        });
     }
 }

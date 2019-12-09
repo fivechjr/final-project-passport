@@ -1,5 +1,5 @@
 <app-frame [withFooter]="false" [backgroundColor]="'#fff'">
-    <header class="-mx-6 px-6">
+    <header class="-mx-6 px-6 mb-6">
         <div class="flex flex-row items-center">
             <div
                 (click)="goBack()"
@@ -12,6 +12,8 @@
                 ></ion-icon>
             </div>
             <input
+                [(ngModel)]="searchModel"
+                (ngModelChange)="go($event)"
                 #search
                 class="font-sans text-sm py-4 bg-transparent w-full"
                 type="text"
@@ -19,4 +21,16 @@
             />
         </div>
     </header>
+    <section *ngIf="listing$ | async as listing">
+        <div class="w-full grid-container">
+            <app-vertical-event-card
+                *ngFor="let event of listing; let i = index"
+                [posterImage]="event.posterImage"
+                [date]="event.startDate | formatDate"
+                [title]="event.title"
+                [faculty]="event.location.faculty"
+                [id]="event._id"
+            ></app-vertical-event-card>
+        </div>
+    </section>
 </app-frame>

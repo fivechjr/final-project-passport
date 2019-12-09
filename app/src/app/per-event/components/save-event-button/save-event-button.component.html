@@ -8,6 +8,7 @@
 <app-expand-button
     *ngIf="isBookmarked | async"
     (click)="removeBookmark()"
+    color="red"
     title="UNSAVE EVENT"
     icon="close"
 ></app-expand-button>

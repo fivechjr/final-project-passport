@@ -12,8 +12,8 @@ import {
 export const routerTransition = trigger('routerTransition', [
     transition('isRight => isLeft', slideTo('left')),
     transition('isLeft => isRight', slideTo('right')),
-    transition('isRight => isRight', slideTo('right')),
-    transition('isLeft => isLeft', slideTo('left')),
+    transition('* => isRight', slideTo('right')),
+    transition('isRight => *', slideTo('left')),
 ]);
 
 function slideTo(direction) {
@@ -35,17 +35,12 @@ function slideTo(direction) {
         group([
             query(
                 ':leave',
-                [animate('400ms ease', style({ [direction]: '100%' }))],
+                [animate('300ms ease', style({ [direction]: '100%' }))],
                 optional,
             ),
             query(':enter', [
-                animate('400ms ease', style({ [direction]: '0%' })),
+                animate('300ms ease', style({ [direction]: '0%' })),
             ]),
         ]),
-        // Normalize the page style... Might not be necessary
-
-        // Required only if you have child animations on the page
-        // query(':leave', animateChild()),
-        // query(':enter', animateChild()),
     ];
 }

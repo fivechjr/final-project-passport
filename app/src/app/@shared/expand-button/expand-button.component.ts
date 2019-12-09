@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./expand-button.component.scss'],
 })
 export class ExpandButtonComponent implements OnInit {
+    @Input() color: string = 'gray';
     @Input() title: string = 'EXPAND';
     @Input() icon: string = 'arrow-down';
 

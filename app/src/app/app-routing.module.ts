@@ -40,9 +40,6 @@ const routes: Routes = [
         path: 'search',
         component: SearchPage,
         pathMatch: 'full',
-        data: {
-            animation: 'isRight',
-        },
     },
     {
         path: 'saved',
