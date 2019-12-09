@@ -10,13 +10,7 @@ import { WalletPage } from './wallet.page';
 import { SharedModule } from '../@shared/shared.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        SharedModule,
-        WalletPageRoutingModule,
-    ],
+    imports: [CommonModule, FormsModule, IonicModule, SharedModule],
     declarations: [WalletPage],
 })
 export class WalletPageModule {}

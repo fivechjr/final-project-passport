@@ -10,13 +10,7 @@ import { SavedPage } from './saved.page';
 import { SharedModule } from '../@shared/shared.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        SharedModule,
-        SavedPageRoutingModule,
-    ],
+    imports: [CommonModule, FormsModule, IonicModule, SharedModule],
     declarations: [SavedPage],
     exports: [SavedPage],
 })

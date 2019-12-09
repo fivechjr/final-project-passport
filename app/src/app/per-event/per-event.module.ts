@@ -15,13 +15,7 @@ import { JoinEventButtonComponent } from './components/join-event-button/join-ev
 import { SaveEventButtonComponent } from './components/save-event-button/save-event-button.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        PerEventPageRoutingModule,
-        SharedModule,
-    ],
+    imports: [CommonModule, FormsModule, IonicModule, SharedModule],
     declarations: [
         PerEventPage,
         SectionTextComponent,

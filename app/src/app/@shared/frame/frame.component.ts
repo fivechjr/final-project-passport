@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FrameComponent implements OnInit {
     @Input() withFooter: boolean = true;
+    @Input() withBottomSpacing: boolean = true;
     @Input() backgroundColor: string = 'rgba(255, 255, 255, 0.5)';
 
     constructor() {}

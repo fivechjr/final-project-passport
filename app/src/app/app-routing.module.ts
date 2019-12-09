@@ -12,16 +12,18 @@ import { SavedPageModule } from './saved/saved.module';
 import { WalletPageModule } from './wallet/wallet.module';
 import { SettingsPage } from './settings/settings.page';
 import { SettingsPageModule } from './settings/settings.module';
+import { AuthPage } from './auth/auth.page';
+import { AuthPageModule } from './auth/auth.module';
 
 const routes: Routes = [
+    { path: '', redirectTo: 'auth', pathMatch: 'full' },
     {
-        path: '',
-        redirectTo: '/events',
-        pathMatch: 'full',
+        path: 'auth',
+        component: AuthPage,
+        // pathMatch: 'full',
     },
     {
         path: 'events',
-        // loadChildren: () => import("./home/home.module").then(m => m.HomePageModule),
         component: HomePage,
         pathMatch: 'full',
         data: {
@@ -56,6 +58,12 @@ const routes: Routes = [
         component: SettingsPage,
         pathMatch: 'full',
     },
+
+    // {
+    //     path: 'auth',
+    //     component: AuthPage,
+    //     pathMatch: 'full',
+    // },
 ];
 
 @NgModule({
@@ -66,6 +74,7 @@ const routes: Routes = [
         SavedPageModule,
         WalletPageModule,
         SettingsPageModule,
+        AuthPageModule,
         RouterModule.forRoot(routes, {
             preloadingStrategy: PreloadAllModules,
             scrollPositionRestoration: 'enabled',
