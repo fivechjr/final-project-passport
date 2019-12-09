@@ -1,4 +1,6 @@
 import { Schema } from 'mongoose';
+import { Event } from './event.model';
+import { User } from './user.model';
 
 export const Response = 'response';
 
@@ -15,10 +17,16 @@ export interface ResponseI {
 }
 
 export const ResponseSchema = new Schema({
-  eventID: Schema.Types.ObjectId,
+  eventID: {
+    type: Schema.Types.ObjectId,
+    ref: Event,
+  },
   users: [
     {
-      userID: Schema.Types.ObjectId,
+      userID: {
+        type: Schema.Types.ObjectId,
+        ref: User,
+      },
       status: {
         type: Number,
         enum: [0, 1],

@@ -79,6 +79,30 @@ export class UserService {
     const ret = await user.save();
   }
 
+  async getBookmarks(userID: string) {
+    return (
+      await this.userModel
+        .findOne({
+          _id: userID,
+        })
+        .select('bookmarks -_id')
+        .populate('bookmarks', 'title startDate location posterImage')
+        .exec()
+    ).toObject();
+  }
+
+  async getUserEvents(userID: string) {
+    return (
+      await this.userModel
+        .findOne({
+          _id: userID,
+        })
+        .select('events -_id')
+        .populate('events', 'title startDate location posterImage')
+        .exec()
+    ).toObject();
+  }
+
   async addBookmark(userID: string, eventID: string) {
     const user = await this.userModel
       .findOne({

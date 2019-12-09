@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose';
+import { Event } from './event.model';
 
 export const User = 'user';
 
@@ -18,8 +19,18 @@ export const UserSchema = new Schema({
   studentID: String,
   faculty: String,
   password: String,
-  bookmarks: [Schema.Types.ObjectId],
-  events: [Schema.Types.ObjectId],
+  bookmarks: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: Event,
+    },
+  ],
+  events: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: Event,
+    },
+  ],
 });
 
 UserSchema.set('toObject', {

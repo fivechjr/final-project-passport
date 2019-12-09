@@ -30,6 +30,11 @@ export class UserController {
     return this.userService.createUser(user);
   }
 
+  @Get('bookmark')
+  getBookmarks(@UserID() userID: string) {
+    return this.userService.getBookmarks(userID);
+  }
+
   @Post('bookmark/:eventID')
   addBookmark(@UserID() userID: string, @Param('eventID') eventID: string) {
     return this.userService.addBookmark(userID, eventID);
@@ -38,5 +43,10 @@ export class UserController {
   @Delete('bookmark/:eventID')
   removeBookmark(@UserID() userID: string, @Param('eventID') eventID: string) {
     return this.userService.removeBookmark(userID, eventID);
+  }
+
+  @Get('event')
+  getEvents(@UserID() userID: string) {
+    return this.userService.getUserEvents(userID);
   }
 }
