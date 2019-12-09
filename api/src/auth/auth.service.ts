@@ -26,7 +26,10 @@ export class AuthService {
       throw new UnauthorizedException('Invalid Password');
     }
 
-    return { token: this.jwtService.sign({ userID: check._id }) };
+    return {
+      user: check.toObject(),
+      token: this.jwtService.sign({ userID: check._id }),
+    };
   }
 
   async decode(token: string): Promise<any> {

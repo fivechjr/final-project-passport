@@ -16,8 +16,8 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get('')
-  getAll() {
-    return this.userService.getAll();
+  getCurrentUser(@UserID() userID: string) {
+    return this.userService.getUserByID(userID, true);
   }
 
   @Get('ping')

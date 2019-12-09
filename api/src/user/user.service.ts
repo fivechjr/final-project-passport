@@ -25,8 +25,14 @@ export class UserService {
     return await this.userModel.findOne({ studentID }).exec();
   }
 
-  async getUserByID(userID: string) {
-    return await this.userModel.findOne({ _id: userID }).exec();
+  async getUserByID(userID: string, toObject: boolean = false) {
+    if (toObject) {
+      return await (
+        await this.userModel.findOne({ _id: userID }).exec()
+      ).toObject();
+    } else {
+      return await this.userModel.findOne({ _id: userID }).exec();
+    }
   }
 
   async createUser(user: Partial<UserI>) {

@@ -21,3 +21,10 @@ export const UserSchema = new Schema({
   bookmarks: [Schema.Types.ObjectId],
   events: [Schema.Types.ObjectId],
 });
+
+UserSchema.set('toObject', {
+  transform: (doc, ret, opt) => {
+    delete ret.password;
+    return ret;
+  },
+});
