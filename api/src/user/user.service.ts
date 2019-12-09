@@ -86,7 +86,7 @@ export class UserService {
           _id: userID,
         })
         .select('bookmarks -_id')
-        .populate('bookmarks', 'title startDate location posterImage')
+        .populate('bookmarks', 'title startDate endDate location posterImage')
         .exec()
     ).toObject();
   }
@@ -98,7 +98,7 @@ export class UserService {
           _id: userID,
         })
         .select('events -_id')
-        .populate('events', 'title startDate location posterImage')
+        .populate('events', 'title startDate endDate location posterImage')
         .exec()
     ).toObject();
   }
