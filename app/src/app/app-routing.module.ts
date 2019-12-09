@@ -14,6 +14,8 @@ import { SettingsPage } from './settings/settings.page';
 import { SettingsPageModule } from './settings/settings.module';
 import { AuthPage } from './auth/auth.page';
 import { AuthPageModule } from './auth/auth.module';
+import { RegisterPage } from './register/register.page';
+import { RegisterPageModule } from './register/register.module';
 
 const routes: Routes = [
     { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -58,6 +60,11 @@ const routes: Routes = [
         component: SettingsPage,
         pathMatch: 'full',
     },
+    {
+        path: 'register',
+        component: RegisterPage,
+        pathMatch: 'full',
+    },
 
     // {
     //     path: 'auth',
@@ -75,6 +82,7 @@ const routes: Routes = [
         WalletPageModule,
         SettingsPageModule,
         AuthPageModule,
+        RegisterPageModule,
         RouterModule.forRoot(routes, {
             preloadingStrategy: PreloadAllModules,
             scrollPositionRestoration: 'enabled',
