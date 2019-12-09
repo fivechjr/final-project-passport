@@ -11,14 +11,14 @@ import { PageTitleComponent } from './page-title/page-title.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { VerticalEventCardComponent } from './vertical-event-card/vertical-event-card.component';
 import { TabItemComponent } from './tab-item/tab-item.component';
-import { HTTPService } from './services/http.service';
+import { ApiService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RelativeTimePipe } from './pipes/relative-time.pipe';
 import { FormatDatePipe } from './pipes/format-date.pipe';
 
 @NgModule({
     imports: [CommonModule, RouterModule, IonicModule, HttpClientModule],
-    providers: [HTTPService],
+    providers: [ApiService],
     declarations: [
         ButtonComponent,
         ExpandButtonComponent,

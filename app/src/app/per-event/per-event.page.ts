@@ -1,8 +1,9 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Location } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { HTTPService } from '../@shared/services/http.service';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../@shared/services/api.service';
+import { AuthService } from '../@shared/services/auth.service';
 
 @Component({
     selector: 'app-per-event',
@@ -29,7 +30,8 @@ export class PerEventPage implements OnInit {
     constructor(
         private location: Location,
         private route: ActivatedRoute,
-        private service: HTTPService,
+        private service: ApiService,
+        private authService: AuthService,
     ) {
         this.navigationBackground = new BehaviorSubject(false);
     }
@@ -37,6 +39,7 @@ export class PerEventPage implements OnInit {
     ngOnInit() {
         this.eventID = this.route.snapshot.paramMap.get('id');
         this.event$ = this.service.get<any>('/event/' + this.eventID);
+        console.log(this.authService.userInfo$);
     }
 
     goBack() {
@@ -57,10 +60,6 @@ export class PerEventPage implements OnInit {
     getNavigationBarTextColor(color: string) {
         const { r: a, g: b, b: c } = this.toRGB(color);
         return 150 < a * 0.299 + b * 0.587 + c * 0.114 ? '#000' : '#fff';
-    }
-
-    async joinEvent() {
-        this.service.post<any>('/response/' + this.eventID).subscribe();
     }
 
     async addBookmark() {

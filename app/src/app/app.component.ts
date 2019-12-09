@@ -5,7 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { routerTransition } from './animations';
 import { RouterOutlet } from '@angular/router';
-import { HTTPService } from './@shared/services/http.service';
+import { ApiService } from './@shared/services/api.service';
+import { AuthService } from './@shared/services/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -18,7 +19,8 @@ export class AppComponent implements OnInit {
         private platform: Platform,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
-        private service: HTTPService,
+        private service: ApiService,
+        private authService: AuthService,
     ) {
         this.initializeApp();
     }
@@ -28,8 +30,10 @@ export class AppComponent implements OnInit {
             studentID: '6131816721',
             password: 'FiveTest',
         });
+
         a.subscribe(v => {
             localStorage.setItem('token', v.token);
+            this.authService.setUserInfo(v);
         });
     }
 

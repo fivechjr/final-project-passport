@@ -1,3 +1,12 @@
-<p>
-  join-event-button works!
-</p>
+<app-button
+    *ngIf="!(isJoined | async)"
+    (click)="joinEvent()"
+    title="JOIN EVENT"
+    [backgroundColor]="backgroundColor"
+></app-button>
+
+<app-button
+    *ngIf="isJoined | async"
+    title="SHOW QR"
+    [backgroundColor]="backgroundColor"
+></app-button>

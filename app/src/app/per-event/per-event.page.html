@@ -72,10 +72,11 @@
             </div>
         </div>
         <div class="mb-6">
-            <app-button
-                (click)="joinEvent()"
+            <join-event-button
                 [backgroundColor]="event.backgroundColor"
-            ></app-button>
+                [eventID]="event._id"
+            >
+            </join-event-button>
         </div>
         <div class="mb-6">
             <section-text
