@@ -1,11 +1,14 @@
 provider "google" {
-  credentials = file("<NAME>.json")
+  credentials = file("~/Desktop/GCP.json")
 
-  project = "<PROJECT_ID>"
+  project = "cu-passport"
   region  = "us-central1"
   zone    = "us-central1-c"
 }
 
-resource "google_compute_network" "vpc_network" {
-  name = "terraform-network"
+resource "google_cloudbuild_trigger" "filename-trigger" {
+  trigger_template {
+    branch_name = "master"
+    repo_name   = "https://github.com/fivechjr/final-project-2019"
+  }
 }
