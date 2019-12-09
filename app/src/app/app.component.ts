@@ -25,17 +25,7 @@ export class AppComponent implements OnInit {
         this.initializeApp();
     }
 
-    ngOnInit() {
-        const a = this.service.post<any>('/auth', {
-            studentID: '6131816721',
-            password: 'FiveTest',
-        });
-
-        a.subscribe(v => {
-            localStorage.setItem('token', v.token);
-            this.authService.setUserInfo(v);
-        });
-    }
+    ngOnInit() {}
 
     initializeApp() {
         this.platform.ready().then(() => {
