@@ -1,5 +1,5 @@
-provider "google-beta" {
-  credentials = file("")
+provider "google" {
+  credentials = file("~/Desktop/GCP.json")
 
   project = "final-project-passport"
   region  = "asia-southeast1"
@@ -7,37 +7,23 @@ provider "google-beta" {
 }
 
 resource "google_cloud_run_service" "default" {
-  name     = "final-project-passport"
+  name     = "cloud-run-final"
   location = "asia-southeast1"
 
   metadata {
-    namespace = "final-project-passport"
-  }
-
-  traffic {
-    percent         = 100
-    latest_revision = true
+    namespace = "final-project"
   }
 
   template {
     spec {
       containers {
         image = "gcr.io/final-project-passport/backend"
-        env {
-          name  = "NODE_ENV"
-          value = "production"
-        }
-
-        env {
-          name  = "SECRET"
-          value = "$(SECRET)"
-        }
-
-        env {
-          name  = "MONGO_URL"
-          value = "$(MONGO_URL)"
-        }
       }
     }
+  }
+
+  traffic {
+    percent         = 100
+    latest_revision = true
   }
 }
