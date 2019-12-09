@@ -22,21 +22,25 @@
             ></div>
             <div class="px-3 w-full flex flex-col mb-8">
                 <input
+                    [formControl]="firstName"
                     type="text"
                     class="font-copy text-sm w-full px-3 py-2 rounded border focus:border-black flex justify-center items-center appearance-none mb-4"
                     placeholder="First Name"
                 />
                 <input
+                    [formControl]="lastName"
                     type="text"
                     class="font-copy text-sm w-full px-3 py-2 rounded border focus:border-black flex justify-center items-center appearance-none mb-4"
                     placeholder="Last Name"
                 />
                 <input
+                    [formControl]="studentID"
                     type="text"
                     class="font-copy text-sm w-full px-3 py-2 rounded border focus:border-black flex justify-center items-center appearance-none mb-4"
                     placeholder="Student ID"
                 />
                 <input
+                    [formControl]="password"
                     type="password"
                     class="font-copy text-sm w-full px-3 py-2 rounded border focus:border-black flex justify-center items-center appearance-none"
                     placeholder="Password"
@@ -44,6 +48,7 @@
             </div>
             <div class="px-3 mb-8">
                 <app-button
+                    (click)="go()"
                     title="CREATE ACCOUNT"
                     backgroundColor="linear-gradient(140deg, #B24592, #F15F79)"
                 ></app-button>

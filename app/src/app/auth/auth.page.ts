@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ApiService } from '../@shared/services/api.service';
 import { AuthService } from '../@shared/services/auth.service';
 import { Router } from '@angular/router';
+import { untilComponentDestroyed } from '../@shared/operators';
 
 @Component({
     selector: 'app-auth',
     templateUrl: './auth.page.html',
     styleUrls: ['./auth.page.scss'],
 })
-export class AuthPage implements OnInit {
+export class AuthPage implements OnInit, OnDestroy {
     studentID = new FormControl('');
     password = new FormControl('');
 
@@ -18,13 +19,17 @@ export class AuthPage implements OnInit {
         private readonly authService: AuthService,
         private readonly router: Router,
     ) {}
+
+    ngOnDestroy() {}
     ngOnInit() {
         this.authService.refresh();
-        this.authService.isAuthenticated$.subscribe(v => {
-            if (v) {
-                this.router.navigate(['/events']);
-            }
-        });
+        this.authService.isAuthenticated$
+            .pipe(untilComponentDestroyed(this))
+            .subscribe(v => {
+                if (v) {
+                    this.router.navigate(['/events']);
+                }
+            });
     }
     go() {
         this.apiService
@@ -32,6 +37,7 @@ export class AuthPage implements OnInit {
                 studentID: this.studentID.value,
                 password: this.password.value,
             })
+            .pipe(untilComponentDestroyed(this))
             .subscribe(v => {
                 this.authService.setUserInfo(v);
             });
