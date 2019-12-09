@@ -23,7 +23,7 @@ export class JoinEventButtonComponent implements OnInit {
 
     ngOnInit() {
         this.authService.userInfo$.subscribe(v => {
-            console.log(v);
+            // console.log(v);
             this.isJoined.next(v.user.events.includes(this.eventID));
         });
     }

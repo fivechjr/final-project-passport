@@ -1,3 +1,13 @@
-<p>
-  save-event-button works!
-</p>
+<app-expand-button
+    *ngIf="!(isBookmarked | async)"
+    (click)="addBookmark()"
+    title="SAVE EVENT"
+    icon="bookmark"
+></app-expand-button>
+
+<app-expand-button
+    *ngIf="isBookmarked | async"
+    (click)="removeBookmark()"
+    title="UNSAVE EVENT"
+    icon="close"
+></app-expand-button>

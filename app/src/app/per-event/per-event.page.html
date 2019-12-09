@@ -95,11 +95,7 @@
             <schedule [data]="s.schedule"></schedule>
         </div>
         <div class="flex justify-center pt-6 border-t">
-            <app-expand-button
-                (click)="addBookmark()"
-                icon="bookmark"
-                title="Save Event"
-            ></app-expand-button>
+            <save-event-button [eventID]="event._id"></save-event-button>
         </div>
     </main>
 </app-frame>
