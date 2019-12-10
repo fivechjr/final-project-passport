@@ -1,16 +1,17 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../@shared/services/api.service';
 import { AuthService } from '../@shared/services/auth.service';
+import { untilComponentDestroyed } from '../@shared/operators';
 
 @Component({
     selector: 'app-per-event',
     templateUrl: './per-event.page.html',
     styleUrls: ['./per-event.page.scss'],
 })
-export class PerEventPage implements OnInit {
+export class PerEventPage implements OnInit, OnDestroy {
     public navigationBackground: BehaviorSubject<boolean>;
     public eventID: string;
     public event$: Subject<any> = new Subject();
@@ -36,11 +37,16 @@ export class PerEventPage implements OnInit {
         this.navigationBackground = new BehaviorSubject(false);
     }
 
+    ngOnDestroy() {}
     ngOnInit() {
         this.eventID = this.route.snapshot.paramMap.get('id');
         this.service.get<any>('/event/' + this.eventID).subscribe(v => {
             this.event$.next(v);
         });
+
+        if (!this.authService.isAuthenticated$.getValue()) {
+            this.authService.refresh();
+        }
     }
 
     goBack() {
