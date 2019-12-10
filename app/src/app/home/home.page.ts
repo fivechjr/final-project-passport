@@ -18,7 +18,7 @@ export class HomePage implements OnInit, OnDestroy {
     ngOnInit() {
         this.service
             .get<any>('/event')
-            .pipe(untilComponentDestroyed(true))
+            .pipe(untilComponentDestroyed(this))
             .subscribe(v => {
                 this.listing$.next(v);
             });
