@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    ViewChild,
+    AfterViewInit,
+    OnDestroy,
+} from '@angular/core';
 import { Location } from '@angular/common';
 import { ApiService } from '../@shared/services/api.service';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -8,12 +14,13 @@ import {
     switchMap,
     takeUntil,
 } from 'rxjs/operators';
+import { untilComponentDestroyed } from '../@shared/operators';
 @Component({
     selector: 'app-search',
     templateUrl: './search.page.html',
     styleUrls: ['./search.page.scss'],
 })
-export class SearchPage implements AfterViewInit, OnInit {
+export class SearchPage implements AfterViewInit, OnInit, OnDestroy {
     public listing$: BehaviorSubject<any>;
     public searchKey: Subject<string> = new Subject();
     public searchModel: string;
@@ -24,20 +31,30 @@ export class SearchPage implements AfterViewInit, OnInit {
         this.listing$ = new BehaviorSubject([]);
     }
 
+    ngOnDestroy() {}
     ngOnInit() {
-        this.apiService.get<any>('/event/search').subscribe(v => {
-            this.listing$.next(v);
-        });
+        this.apiService
+            .get<any>('/event/search')
+            .pipe(untilComponentDestroyed(this))
+            .subscribe(v => {
+                this.listing$.next(v);
+            });
 
-        this.searchKey.subscribe(v => console.log);
+        this.searchKey
+            .pipe(untilComponentDestroyed(this))
+            .subscribe(v => console.log);
         this.searchKey
             .pipe(
+                untilComponentDestroyed(this),
                 debounceTime(300),
                 distinctUntilChanged(),
                 switchMap(s =>
                     this.apiService
                         .get<any>('/event/search?key=' + s)
-                        .pipe(takeUntil(this.searchKey)),
+                        .pipe(
+                            takeUntil(this.searchKey),
+                            untilComponentDestroyed(this),
+                        ),
                 ),
             )
             .subscribe(v => {

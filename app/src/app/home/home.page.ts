@@ -1,21 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../@shared/services/api.service';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { untilComponentDestroyed } from '../@shared/operators';
 
 @Component({
     selector: 'app-home',
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
     private listing$: BehaviorSubject<any>;
     public today: Date = new Date();
     constructor(private service: ApiService) {
         this.listing$ = new BehaviorSubject([]);
     }
+    ngOnDestroy() {}
     ngOnInit() {
-        this.service.get<any>('/event').subscribe(v => {
-            this.listing$.next(v);
-        });
+        this.service
+            .get<any>('/event')
+            .pipe(untilComponentDestroyed(true))
+            .subscribe(v => {
+                this.listing$.next(v);
+            });
     }
 }

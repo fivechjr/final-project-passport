@@ -40,9 +40,12 @@ export class PerEventPage implements OnInit, OnDestroy {
     ngOnDestroy() {}
     ngOnInit() {
         this.eventID = this.route.snapshot.paramMap.get('id');
-        this.service.get<any>('/event/' + this.eventID).subscribe(v => {
-            this.event$.next(v);
-        });
+        this.service
+            .get<any>('/event/' + this.eventID)
+            .pipe(untilComponentDestroyed(this))
+            .subscribe(v => {
+                this.event$.next(v);
+            });
 
         if (!this.authService.isAuthenticated$.getValue()) {
             this.authService.refresh();
@@ -70,6 +73,9 @@ export class PerEventPage implements OnInit, OnDestroy {
     }
 
     async addBookmark() {
-        this.service.post<any>('/user/bookmark/' + this.eventID).subscribe();
+        this.service
+            .post<any>('/user/bookmark/' + this.eventID)
+            .pipe(untilComponentDestroyed(this))
+            .subscribe();
     }
 }
