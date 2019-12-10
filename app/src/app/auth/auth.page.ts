@@ -44,8 +44,13 @@ export class AuthPage implements OnInit, OnDestroy {
                 password: this.password.value,
             })
             .pipe(untilComponentDestroyed(this))
-            .subscribe(v => {
-                this.authService.setUserInfo(v);
-            });
+            .subscribe(
+                u => {
+                    this.authService.setUserInfo(u);
+                },
+                e => {
+                    this.toastService.showToast(e.error.message);
+                },
+            );
     }
 }
