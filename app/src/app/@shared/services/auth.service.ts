@@ -30,13 +30,14 @@ export class AuthService {
             localStorage.setItem('token', userObject.token);
         }
 
+        this.userInfo$.next(userObject);
+
         if (!this.isAuthenticated$.getValue()) {
+            this.isAuthenticated$.next(true);
+            console.log('Auth');
             this.toastService.showToast(
                 'Authenticated as ' + userObject.user.firstName,
             );
-            this.isAuthenticated$.next(true);
         }
-
-        this.userInfo$.next(userObject);
     }
 }

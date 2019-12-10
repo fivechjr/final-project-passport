@@ -10,6 +10,7 @@ export class ToastService {
     constructor() {}
     showToast(text: string) {
         this.showToast$.next(text);
+        // console.log('showToast');
         const timer$ = timer(2000);
         const interval$ = interval(1500);
         interval$.pipe(takeUntil(timer$)).subscribe(_ => {

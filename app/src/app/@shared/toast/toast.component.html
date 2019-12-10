@@ -1,5 +1,6 @@
 <div
     *ngIf="showToast$ | async as showToast"
+    [@enterAnimation]
     class="fixed flex shadow-lg rounded z-30"
     [ngStyle]="{ 'background-color': backgroundColor }"
 >
