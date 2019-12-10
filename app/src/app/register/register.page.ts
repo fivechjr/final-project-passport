@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { timer } from 'rxjs';
 import { untilComponentDestroyed } from '../@shared/operators';
 import { ApiService } from '../@shared/services/api.service';
 import { AuthService } from '../@shared/services/auth.service';
+import { ToastService } from '../@shared/services/toast.service';
 
 @Component({
     selector: 'app-register',
@@ -19,6 +21,7 @@ export class RegisterPage implements OnInit, OnDestroy {
     constructor(
         private readonly apiService: ApiService,
         private readonly authService: AuthService,
+        private readonly toastService: ToastService,
         private readonly router: Router,
     ) {}
 
@@ -35,6 +38,7 @@ export class RegisterPage implements OnInit, OnDestroy {
     }
 
     go() {
+        const timer$ = timer(1000);
         this.apiService
             .post('/user', {
                 firstName: this.firstName.value,
@@ -43,8 +47,16 @@ export class RegisterPage implements OnInit, OnDestroy {
                 password: this.password.value,
             })
             .pipe(untilComponentDestroyed(this))
-            .subscribe(_ => {
-                this.router.navigate(['/auth']);
-            });
+            .subscribe(
+                _ => {
+                    this.toastService.showToast('Account Created!');
+                    timer$.pipe(untilComponentDestroyed(this)).subscribe(_ => {
+                        this.router.navigate(['/auth']);
+                    });
+                },
+                e => {
+                    this.toastService.showToast(e.error.message);
+                },
+            );
     }
 }
