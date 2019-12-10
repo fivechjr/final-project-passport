@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
     @Input() title: string = 'Page';
+    @Input() backgroundColor: string = '#ffffff';
 
     constructor() {}
 

@@ -1,5 +1,8 @@
-<app-frame [backgroundColor]="'#fff'">
-    <app-navigation-bar title="My Wallet"></app-navigation-bar>
+<app-frame backgroundColor="#fff">
+    <app-navigation-bar
+        title="My Wallet"
+        backgroundColor="#fff"
+    ></app-navigation-bar>
     <section class="mt-6" *ngIf="listing$ | async as listing">
         <app-horizontal-event-card
             *ngFor="let event of listing; let i = index"

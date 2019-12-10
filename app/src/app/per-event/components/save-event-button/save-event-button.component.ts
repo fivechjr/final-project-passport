@@ -52,7 +52,7 @@ export class SaveEventButtonComponent implements OnInit, OnDestroy {
             .pipe(untilComponentDestroyed(this))
             .subscribe(_ => {
                 this.authService.refresh();
-                this.toastService.showToast('Removed');
+                this.toastService.showToast('Event Removed');
             });
     }
 }
