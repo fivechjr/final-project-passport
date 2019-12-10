@@ -1,18 +1,17 @@
-import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { EventModule } from './event/event.module';
-import { ResponseModule } from './response/response.module';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
-import { MongooseModule } from '@nestjs/mongoose';
 import { CryptoModule } from './crypto/crypto.module';
+import { EventModule } from './event/event.module';
 import { AuthMiddleware } from './middlewares/auth.middleware';
-import { UserController } from './user/user.controller';
 import { ResponseController } from './response/response.controller';
-import { EventController } from './event/event.controller';
+import { ResponseModule } from './response/response.module';
+import { UserController } from './user/user.controller';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [

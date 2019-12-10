@@ -1,13 +1,9 @@
-import {
-  Injectable,
-  BadRequestException,
-  NotFoundException,
-} from '@nestjs/common';
-import { Response, ResponseI } from 'src/models/response.model';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { UserService } from 'src/user/user.service';
 import { EventService } from 'src/event/event.service';
+import { Response, ResponseI } from 'src/models/response.model';
+import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class ResponseService {

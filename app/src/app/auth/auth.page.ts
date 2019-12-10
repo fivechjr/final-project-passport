@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ApiService } from '../@shared/services/api.service';
-import { AuthService } from '../@shared/services/auth.service';
 import { Router } from '@angular/router';
 import { untilComponentDestroyed } from '../@shared/operators';
+import { ApiService } from '../@shared/services/api.service';
+import { AuthService } from '../@shared/services/auth.service';
 
 @Component({
     selector: 'app-auth',

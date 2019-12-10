@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
+import { RouterOutlet } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { routerTransition } from './animations';
-import { RouterOutlet } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import { ApiService } from './@shared/services/api.service';
 import { AuthService } from './@shared/services/auth.service';
+import { routerTransition } from './animations';
 
 @Component({
     selector: 'app-root',

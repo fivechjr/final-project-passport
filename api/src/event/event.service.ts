@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Event, EventI } from 'src/models/event.model';
 import { Model } from 'mongoose';
+import { Event, EventI } from 'src/models/event.model';
 
 @Injectable()
 export class EventService {

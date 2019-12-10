@@ -1,8 +1,8 @@
 import {
+    HttpEvent,
+    HttpHandler,
     HttpInterceptor,
     HttpRequest,
-    HttpHandler,
-    HttpEvent,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 

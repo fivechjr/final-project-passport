@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
-import { AuthPage } from './auth.page';
-import { SharedModule } from '../@shared/shared.module';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { SharedModule } from '../@shared/shared.module';
+import { AuthPage } from './auth.page';
 
 @NgModule({
     imports: [

@@ -1,6 +1,6 @@
-import { Controller, Post, Param, Get } from '@nestjs/common';
-import { ResponseService } from './response.service';
+import { Controller, Get, Param, Post } from '@nestjs/common';
 import { UserID } from 'src/decorators/user.decorator';
+import { ResponseService } from './response.service';
 
 @Controller('response')
 export class ResponseController {

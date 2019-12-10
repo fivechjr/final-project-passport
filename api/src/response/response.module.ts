@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ResponseService } from './response.service';
-import { ResponseController } from './response.controller';
-import { ResponseSchema, Response } from 'src/models/response.model';
 import { MongooseModule } from '@nestjs/mongoose';
 import { EventModule } from 'src/event/event.module';
+import { Response, ResponseSchema } from 'src/models/response.model';
 import { UserModule } from 'src/user/user.module';
+import { ResponseController } from './response.controller';
+import { ResponseService } from './response.service';
 
 @Module({
   imports: [

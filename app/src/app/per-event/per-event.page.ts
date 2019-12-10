@@ -1,10 +1,10 @@
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { untilComponentDestroyed } from '../@shared/operators';
 import { ApiService } from '../@shared/services/api.service';
 import { AuthService } from '../@shared/services/auth.service';
-import { untilComponentDestroyed } from '../@shared/operators';
 
 @Component({
     selector: 'app-per-event',

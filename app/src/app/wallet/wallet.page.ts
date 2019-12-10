@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ApiService } from '../@shared/services/api.service';
 import { untilComponentDestroyed } from '../@shared/operators';
+import { ApiService } from '../@shared/services/api.service';
 
 @Component({
     selector: 'app-wallet',

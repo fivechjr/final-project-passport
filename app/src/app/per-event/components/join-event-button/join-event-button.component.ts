@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { AuthService } from 'src/app/@shared/services/auth.service';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ApiService } from 'src/app/@shared/services/api.service';
 import { untilComponentDestroyed } from 'src/app/@shared/operators';
+import { ApiService } from 'src/app/@shared/services/api.service';
+import { AuthService } from 'src/app/@shared/services/auth.service';
 
 @Component({
     selector: 'join-event-button',

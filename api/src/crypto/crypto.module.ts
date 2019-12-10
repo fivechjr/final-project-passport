@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { CryptoService } from './crypto.service';
 import { ConfigModule } from 'src/config/config.module';
 import { ConfigService } from 'src/config/config.service';
+import { CryptoService } from './crypto.service';
 
 @Module({
   imports: [ConfigModule],

@@ -1,13 +1,13 @@
 import {
-  Injectable,
   BadRequestException,
+  Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { UserI, User } from 'src/models/user.model';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CryptoService } from 'src/crypto/crypto.service';
 import { EventService } from 'src/event/event.service';
+import { User, UserI } from 'src/models/user.model';
 
 @Injectable()
 export class UserService {

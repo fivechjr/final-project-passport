@@ -1,12 +1,11 @@
+import { Location } from '@angular/common';
 import {
+    AfterViewInit,
     Component,
+    OnDestroy,
     OnInit,
     ViewChild,
-    AfterViewInit,
-    OnDestroy,
 } from '@angular/core';
-import { Location } from '@angular/common';
-import { ApiService } from '../@shared/services/api.service';
 import { BehaviorSubject, Subject } from 'rxjs';
 import {
     debounceTime,
@@ -15,6 +14,7 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 import { untilComponentDestroyed } from '../@shared/operators';
+import { ApiService } from '../@shared/services/api.service';
 @Component({
     selector: 'app-search',
     templateUrl: './search.page.html',
