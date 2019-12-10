@@ -16,7 +16,11 @@ export class EventService {
   }
 
   getAll() {
-    return this.eventModel.find().exec();
+    return this.eventModel
+      .find()
+      .sort({ endDate: -1 })
+      .sort({ startDate: 1 })
+      .exec();
   }
 
   // async searchByEventTitle(key: string) {
