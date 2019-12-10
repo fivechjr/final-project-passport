@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { untilComponentDestroyed } from '../@shared/operators';
 import { ApiService } from '../@shared/services/api.service';
 import { AuthService } from '../@shared/services/auth.service';
+import { ToastService } from '../@shared/services/toast.service';
 
 @Component({
     selector: 'app-auth',
@@ -17,6 +18,7 @@ export class AuthPage implements OnInit, OnDestroy {
     constructor(
         private readonly apiService: ApiService,
         private readonly authService: AuthService,
+        private readonly toastService: ToastService,
         private readonly router: Router,
     ) {}
 

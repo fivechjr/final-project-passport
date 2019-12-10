@@ -1,0 +1,9 @@
+<div
+    *ngIf="showToast$ | async as showToast"
+    class="fixed flex shadow-lg rounded z-30"
+    [ngStyle]="{ 'background-color': backgroundColor }"
+>
+    <p class="px-4 py-2 text-xs whitespace-no-wrap" [style.color]="color">
+        {{ showToast }}
+    </p>
+</div>

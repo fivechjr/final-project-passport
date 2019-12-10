@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ButtonComponent } from './button/button.component';
+import { EmptyStateComponent } from './empty-state/empty-state.component';
 import { ExpandButtonComponent } from './expand-button/expand-button.component';
 import { FrameComponent } from './frame/frame.component';
 import { HorizontalEventCardComponent } from './horizontal-event-card/horizontal-event-card.component';
@@ -12,38 +13,43 @@ import { PageTitleComponent } from './page-title/page-title.component';
 import { FormatDatePipe } from './pipes/format-date.pipe';
 import { RelativeTimePipe } from './pipes/relative-time.pipe';
 import { ScheduleComponent } from './schedule/schedule.component';
-import { ApiService } from './services/api.service';
+import { ToastService } from './services/toast.service';
 import { TabItemComponent } from './tab-item/tab-item.component';
+import { ToastComponent } from './toast/toast.component';
 import { VerticalEventCardComponent } from './vertical-event-card/vertical-event-card.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, IonicModule, HttpClientModule],
-    providers: [ApiService],
+    providers: [ToastService],
     declarations: [
         ButtonComponent,
+        EmptyStateComponent,
         ExpandButtonComponent,
+        FormatDatePipe,
         FrameComponent,
         HorizontalEventCardComponent,
         NavigationBarComponent,
         PageTitleComponent,
-        ScheduleComponent,
-        VerticalEventCardComponent,
-        TabItemComponent,
-        FormatDatePipe,
         RelativeTimePipe,
+        ScheduleComponent,
+        TabItemComponent,
+        ToastComponent,
+        VerticalEventCardComponent,
     ],
     exports: [
         ButtonComponent,
+        EmptyStateComponent,
         ExpandButtonComponent,
+        FormatDatePipe,
         FrameComponent,
         HorizontalEventCardComponent,
         NavigationBarComponent,
         PageTitleComponent,
-        ScheduleComponent,
-        VerticalEventCardComponent,
-        TabItemComponent,
-        FormatDatePipe,
         RelativeTimePipe,
+        ScheduleComponent,
+        TabItemComponent,
+        ToastComponent,
+        VerticalEventCardComponent,
     ],
 })
 export class SharedModule {}

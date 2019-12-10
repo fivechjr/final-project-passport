@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { untilComponentDestroyed } from 'src/app/@shared/operators';
 import { ApiService } from 'src/app/@shared/services/api.service';
 import { AuthService } from 'src/app/@shared/services/auth.service';
+import { ToastService } from 'src/app/@shared/services/toast.service';
 
 @Component({
     selector: 'save-event-button',
@@ -17,6 +18,7 @@ export class SaveEventButtonComponent implements OnInit, OnDestroy {
     constructor(
         private readonly apiService: ApiService,
         private readonly authService: AuthService,
+        private readonly toastService: ToastService,
     ) {
         this.isBookmarked = new BehaviorSubject(false);
     }
@@ -40,6 +42,7 @@ export class SaveEventButtonComponent implements OnInit, OnDestroy {
             .pipe(untilComponentDestroyed(this))
             .subscribe(_ => {
                 this.authService.refresh();
+                this.toastService.showToast('Event Saved');
             });
     }
 
@@ -49,6 +52,7 @@ export class SaveEventButtonComponent implements OnInit, OnDestroy {
             .pipe(untilComponentDestroyed(this))
             .subscribe(_ => {
                 this.authService.refresh();
+                this.toastService.showToast('Removed');
             });
     }
 }

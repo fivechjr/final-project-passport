@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ApiService } from './api.service';
+import { ToastService } from './toast.service';
 
 @Injectable({
     providedIn: 'root',
@@ -10,7 +11,10 @@ export class AuthService {
     public isAuthenticated$: BehaviorSubject<boolean>;
     public test = 'Go';
 
-    constructor(private readonly apiService: ApiService) {
+    constructor(
+        private readonly apiService: ApiService,
+        private readonly toastService: ToastService,
+    ) {
         this.userInfo$ = new BehaviorSubject(null);
         this.isAuthenticated$ = new BehaviorSubject(false);
     }
@@ -21,12 +25,15 @@ export class AuthService {
         });
     }
 
-    setUserInfo(user: any) {
-        if (user.token) {
-            localStorage.setItem('token', user.token);
+    setUserInfo(userObject: any) {
+        if (userObject.token) {
+            localStorage.setItem('token', userObject.token);
+            this.toastService.showToast(
+                'Authenticated as ' + userObject.user.firstName,
+            );
         }
 
-        this.userInfo$.next(user);
+        this.userInfo$.next(userObject);
         this.isAuthenticated$.next(true);
     }
 }

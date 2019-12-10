@@ -5,6 +5,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { untilComponentDestroyed } from '../@shared/operators';
 import { ApiService } from '../@shared/services/api.service';
 import { AuthService } from '../@shared/services/auth.service';
+import { getContrastTextColor } from '../@shared/utils';
 
 @Component({
     selector: 'app-per-event',
@@ -56,20 +57,8 @@ export class PerEventPage implements OnInit, OnDestroy {
         this.location.back();
     }
 
-    toRGB(hex) {
-        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result
-            ? {
-                  r: parseInt(result[1], 16),
-                  g: parseInt(result[2], 16),
-                  b: parseInt(result[3], 16),
-              }
-            : null;
-    }
-
     getNavigationBarTextColor(color: string) {
-        const { r: a, g: b, b: c } = this.toRGB(color);
-        return 150 < a * 0.299 + b * 0.587 + c * 0.114 ? '#000' : '#fff';
+        return getContrastTextColor(color);
     }
 
     async addBookmark() {

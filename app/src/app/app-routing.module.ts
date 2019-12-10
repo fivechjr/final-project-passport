@@ -72,18 +72,18 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
+        AuthPageModule,
         HomePageModule,
         PerEventPageModule,
-        SearchPageModule,
-        SavedPageModule,
-        WalletPageModule,
-        SettingsPageModule,
-        AuthPageModule,
         RegisterPageModule,
         RouterModule.forRoot(routes, {
             preloadingStrategy: PreloadAllModules,
             scrollPositionRestoration: 'enabled',
         }),
+        SavedPageModule,
+        SearchPageModule,
+        SettingsPageModule,
+        WalletPageModule,
     ],
     exports: [RouterModule],
 })

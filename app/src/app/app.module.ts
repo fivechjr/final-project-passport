@@ -14,10 +14,10 @@ import { AppComponent } from './app.component';
     declarations: [AppComponent],
     entryComponents: [],
     imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        IonicModule.forRoot(),
         AppRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        IonicModule.forRoot(),
     ],
     providers: [
         StatusBar,
