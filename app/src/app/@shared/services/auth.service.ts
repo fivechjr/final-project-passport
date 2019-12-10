@@ -28,12 +28,15 @@ export class AuthService {
     setUserInfo(userObject: any) {
         if (userObject.token) {
             localStorage.setItem('token', userObject.token);
+        }
+
+        if (!this.isAuthenticated$.getValue()) {
             this.toastService.showToast(
                 'Authenticated as ' + userObject.user.firstName,
             );
+            this.isAuthenticated$.next(true);
         }
 
         this.userInfo$.next(userObject);
-        this.isAuthenticated$.next(true);
     }
 }

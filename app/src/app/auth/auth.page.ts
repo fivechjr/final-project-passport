@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { timer } from 'rxjs';
 import { untilComponentDestroyed } from '../@shared/operators';
 import { ApiService } from '../@shared/services/api.service';
 import { AuthService } from '../@shared/services/auth.service';
@@ -25,11 +26,14 @@ export class AuthPage implements OnInit, OnDestroy {
     ngOnDestroy() {}
     ngOnInit() {
         this.authService.refresh();
+        const timer$ = timer(1000);
         this.authService.isAuthenticated$
             .pipe(untilComponentDestroyed(this))
             .subscribe(v => {
                 if (v) {
-                    this.router.navigate(['/events']);
+                    timer$.pipe(untilComponentDestroyed(this)).subscribe(_ => {
+                        this.router.navigate(['/events']);
+                    });
                 }
             });
     }
