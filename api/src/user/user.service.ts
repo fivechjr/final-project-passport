@@ -6,7 +6,6 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CryptoService } from 'src/crypto/crypto.service';
-import { EventService } from 'src/event/event.service';
 import { User, UserI } from 'src/models/user.model';
 
 @Injectable()
@@ -14,7 +13,6 @@ export class UserService {
   constructor(
     @InjectModel(User) private readonly userModel: Model<UserI>,
     private readonly cryptoService: CryptoService,
-    private readonly eventService: EventService,
   ) {}
 
   async getAll() {
@@ -27,9 +25,14 @@ export class UserService {
 
   async getUserByID(userID: string, toObject: boolean = false) {
     if (toObject) {
-      return await (
-        await this.userModel.findOne({ _id: userID }).exec()
-      ).toObject();
+      try {
+        const user = await (
+          await this.userModel.findOne({ _id: userID }).exec()
+        ).toObject();
+        return user;
+      } catch (e) {
+        throw new NotFoundException('User Not Found');
+      }
     } else {
       return await this.userModel.findOne({ _id: userID }).exec();
     }
@@ -38,7 +41,7 @@ export class UserService {
   async createUser(user: Partial<UserI>) {
     const check = await this.getUserByStudentID(user.studentID);
     if (check) {
-      throw new BadRequestException('Already Exists');
+      throw new BadRequestException('User Already Exists');
     }
 
     user.faculty = this.getFaculty(user.studentID);
@@ -68,7 +71,7 @@ export class UserService {
       .exec();
 
     if (!user) {
-      throw new NotFoundException('Not Found');
+      throw new NotFoundException('User Not Found');
     }
 
     if (user.events.includes(eventID)) {
@@ -111,7 +114,7 @@ export class UserService {
       .exec();
 
     if (!user) {
-      throw new NotFoundException('Not Found');
+      throw new NotFoundException('User Not Found');
     }
 
     if (user.bookmarks.includes(eventID)) {
@@ -131,7 +134,7 @@ export class UserService {
       .exec();
 
     if (!user) {
-      throw new NotFoundException('Not Found');
+      throw new NotFoundException('User Not Found');
     }
 
     if (!user.bookmarks.includes(eventID)) {

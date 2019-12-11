@@ -13,15 +13,14 @@ export class AuthMiddleware implements NestMiddleware {
       throw new UnauthorizedException('No JWT');
     }
 
-    const verify = await this.authService.decode(
-      req.headers.authorization.split(' ')[1],
-    );
-
-    if (!verify) {
-      throw new UnauthorizedException('Invalid JWT');
+    try {
+      const verify = await this.authService.decode(
+        req.headers.authorization.split(' ')[1],
+      );
+      req.userID = verify.userID;
+      next();
+    } catch (e) {
+      throw new UnauthorizedException('Invalid Credentials');
     }
-
-    req.userID = verify.userID;
-    next();
   }
 }
