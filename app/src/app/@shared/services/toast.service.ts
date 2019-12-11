@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, interval, timer } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { BehaviorSubject, timer } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -11,9 +10,11 @@ export class ToastService {
     showToast(text: string) {
         this.showToast$.next(text);
         const timer$ = timer(2000);
-        const interval$ = interval(1500);
-        interval$.pipe(takeUntil(timer$)).subscribe(_ => {
+        timer$.subscribe(_ => {
             this.showToast$.next(null);
         });
+        // const interval$ = interval(1500);
+        // interval$.pipe(takeUntil(timer$)).subscribe(_ => {
+        // });
     }
 }

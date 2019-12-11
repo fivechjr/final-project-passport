@@ -40,4 +40,11 @@ export class AuthService {
             );
         }
     }
+
+    clearUserInfo() {
+        localStorage.removeItem('token');
+        this.userInfo$.next(null);
+        this.isAuthenticated$.next(false);
+        this.toastService.showToast('Signed Out');
+    }
 }
