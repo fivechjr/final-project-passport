@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { untilComponentDestroyed } from '../@shared/operators';
 import { AuthService } from '../@shared/services/auth.service';
 
@@ -9,7 +10,10 @@ import { AuthService } from '../@shared/services/auth.service';
     styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit, OnDestroy {
-    constructor(private authService: AuthService, private router: Router) {}
+    public userInfo$: Observable<any>;
+    constructor(private authService: AuthService, private router: Router) {
+        this.userInfo$ = this.authService.userInfo$;
+    }
 
     ngOnDestroy() {}
     ngOnInit() {}

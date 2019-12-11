@@ -1,6 +1,31 @@
 <app-frame [backgroundColor]="'#fff'">
     <app-navigation-bar title="Settings"></app-navigation-bar>
     <section class="mt-6">
+        <div
+            class="relative flex flex-col bg-white rounded shadow-xl mb-6"
+            *ngIf="(userInfo$ | async) as user"
+        >
+            <div class="px-6 py-4 flex flex-col">
+                <p
+                    class="mb-1 text-2xs tracking-wide font-sans tracking-widest text-black uppercase"
+                >
+                    AUTHENTICATED AS
+                </p>
+                <p class="text-sm text-black font-sans">
+                    {{ user.user.firstName }} {{ user.user.lastName }}
+                </p>
+                <p
+                    class="text-xs text-black leading-none mt-2 tracking-wide text-gray-600 font-sans"
+                >
+                    {{ user.user.studentID }}
+                </p>
+                <p
+                    class="text-xs text-black leading-none mt-2 tracking-wide text-gray-400 font-sans"
+                >
+                    {{ user.user.faculty }}
+                </p>
+            </div>
+        </div>
         <app-button
             (click)="go()"
             title="SIGN OUT"

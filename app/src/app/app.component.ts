@@ -24,7 +24,11 @@ export class AppComponent implements OnInit {
         this.initializeApp();
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        if (!this.authService.isAuthenticated$.getValue()) {
+            this.authService.refresh();
+        }
+    }
 
     initializeApp() {
         this.platform.ready().then(() => {

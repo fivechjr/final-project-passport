@@ -47,10 +47,6 @@ export class PerEventPage implements OnInit, OnDestroy {
             .subscribe(v => {
                 this.event$.next(v);
             });
-
-        if (!this.authService.isAuthenticated$.getValue()) {
-            this.authService.refresh();
-        }
     }
 
     goBack() {
