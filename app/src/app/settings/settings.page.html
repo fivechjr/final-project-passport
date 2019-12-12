@@ -19,7 +19,11 @@
         <div class="mt-6">
             <app-card>
                 <div>
-                    <check [formControl]="displayOnlyFacultyEvents$"></check>
+                    <div class="flex w-full">
+                        <check
+                            [formControl]="displayOnlyFacultyEvents$"
+                        ></check>
+                    </div>
                     <p
                         class="text-sm font-medium text-black font-copy truncate mt-3"
                     >
@@ -40,7 +44,9 @@
         <div class="mt-6">
             <app-card>
                 <div>
-                    <check [formControl]="displayEndedEvents$"></check>
+                    <div class="flex w-full">
+                        <check [formControl]="displayEndedEvents$"></check>
+                    </div>
                     <p
                         class="text-sm font-medium text-black font-copy truncate mt-3"
                     >
