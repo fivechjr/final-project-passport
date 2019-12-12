@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { UserID } from 'src/decorators/user.decorator';
-import { CreateUserDTO } from './user.dto';
+import { CreateUserDTO, UpdateContentPreferenceDTO } from './user.dto';
 import { UserService } from './user.service';
 
 @Controller('user')
@@ -40,5 +40,17 @@ export class UserController {
   @Get('event')
   getEvents(@UserID() userID: string) {
     return this.userService.getUserEvents(userID);
+  }
+
+  @Post('content-preference')
+  updateContentPreference(
+    @UserID() userID: string,
+    @Body() contentPreference: UpdateContentPreferenceDTO,
+  ) {
+    return this.userService.updateContentPreference(
+      userID,
+      contentPreference.key,
+      contentPreference.value,
+    );
   }
 }

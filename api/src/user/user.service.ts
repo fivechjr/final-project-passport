@@ -6,7 +6,7 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CryptoService } from 'src/crypto/crypto.service';
-import { User, UserI } from 'src/models/user.model';
+import { ContentPreferenceI, User, UserI } from 'src/models/user.model';
 
 @Injectable()
 export class UserService {
@@ -38,6 +38,16 @@ export class UserService {
     }
   }
 
+  async updateContentPreference(userID: string, key: string, value: number) {
+    const user = await this.getUserByID(userID);
+    user.contentPreferences.map((p: ContentPreferenceI) => {
+      if (p.key === key) {
+        p.value = Number(value);
+      }
+    });
+    return await user.save();
+  }
+
   async createUser(user: Partial<UserI>) {
     const check = await this.getUserByStudentID(user.studentID);
     if (check) {
@@ -46,6 +56,19 @@ export class UserService {
 
     user.faculty = this.getFaculty(user.studentID);
     user.password = this.cryptoService.hashSync(user.password);
+
+    const contentPreferences = [
+      {
+        key: 'FACULTY_EVENTS',
+        value: 0, // 0 = False, 1 = True
+      },
+      {
+        key: 'ENDED_EVENTS',
+        value: 1, // 0 = False, 1 = True
+      },
+    ];
+
+    user.contentPreferences = contentPreferences;
 
     const createUser = new this.userModel(user);
 

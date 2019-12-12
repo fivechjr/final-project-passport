@@ -3,6 +3,11 @@ import { Event } from './event.model';
 
 export const User = 'user';
 
+export interface ContentPreferenceI {
+  key: string;
+  value: number;
+}
+
 export interface UserI {
   firstName: string;
   lastName: string;
@@ -11,6 +16,7 @@ export interface UserI {
   faculty: string;
   bookmarks: string[];
   events: string[];
+  contentPreferences: ContentPreferenceI[];
 }
 
 export const UserSchema = new Schema({
@@ -29,6 +35,16 @@ export const UserSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: Event,
+    },
+  ],
+  contentPreferences: [
+    {
+      key: String,
+      value: {
+        type: Number,
+        enum: [0, 1],
+        default: 0, // 0 = False, 1 = True
+      },
     },
   ],
 });
