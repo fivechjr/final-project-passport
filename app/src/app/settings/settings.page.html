@@ -1,69 +1,78 @@
 <app-frame [backgroundColor]="'#fff'">
     <app-navigation-bar title="Settings"></app-navigation-bar>
     <section class="mt-6">
-        <app-card *ngIf="(userInfo$ | async) as user">
-            <p class="text-sm font-medium text-pink-500 font-copy">
-                {{ user.user.firstName }} {{ user.user.lastName }}
-            </p>
-            <p
-                class="text-xs font-medium text-black leading-none mt-2 tracking-wide text-gray-600 font-copy"
-            >
-                {{ user.user.studentID }}
-            </p>
-            <p
-                class="text-xs font-medium text-black leading-none mt-2 tracking-wide text-gray-600 font-copy"
-            >
-                {{ user.user.faculty }}
-            </p>
-        </app-card>
-        <div class="mt-6">
+        <ng-container *ngIf="(userInfo$ | async) as user">
             <app-card>
-                <div>
-                    <div class="flex w-full">
-                        <check
-                            [formControl]="displayOnlyFacultyEvents$"
-                        ></check>
-                    </div>
-                    <p
-                        class="text-sm font-medium text-black font-copy truncate mt-3"
-                    >
-                        Display only "Engineering" events
-                    </p>
-                    <p
-                        class="text-xs mt-2 tracking-wide text-gray-600 font-copy"
-                    >
-                        Enabling this option will filter out all events from
-                        <span class="font-medium">All Events</span> and
-                        <span class="font-medium">Search</span> &mdash; except
-                        events from
-                        <span class="font-medium">Faculty of Engineering</span>
-                    </p>
-                </div>
+                <p class="text-sm font-medium text-pink-500 font-copy">
+                    {{ user.user.firstName }} {{ user.user.lastName }}
+                </p>
+                <p
+                    class="text-xs font-medium text-black leading-none mt-2 tracking-wide text-gray-600 font-copy"
+                >
+                    {{ user.user.studentID }}
+                </p>
+                <p
+                    class="text-xs font-medium text-black leading-none mt-2 tracking-wide text-gray-600 font-copy"
+                >
+                    {{ user.user.faculty }}
+                </p>
             </app-card>
-        </div>
-        <div class="mt-6">
-            <app-card>
-                <div>
-                    <div class="flex w-full">
-                        <check [formControl]="displayEndedEvents$"></check>
+            <div class="mt-6">
+                <app-card>
+                    <div>
+                        <div class="flex w-full">
+                            <check
+                                [formControl]="displayOnlyFacultyEvents$"
+                            ></check>
+                        </div>
+                        <p
+                            class="text-sm font-medium text-black font-copy mt-3"
+                        >
+                            Display only
+                            <span class="font-semibold"
+                                >{{ user.user.faculty }}</span
+                            >
+                            events
+                        </p>
+                        <p
+                            class="text-xs mt-2 tracking-wide text-gray-600 font-copy"
+                        >
+                            Enabling this option will filter out all events from
+                            <span class="font-medium">All Events</span> and
+                            <span class="font-medium">Search</span> &mdash;
+                            except events from
+                            <span class="font-medium"
+                                >Faculty of Engineering</span
+                            >
+                        </p>
                     </div>
-                    <p
-                        class="text-sm font-medium text-black font-copy truncate mt-3"
-                    >
-                        Display ended events
-                    </p>
-                    <p
-                        class="text-xs mt-2 tracking-wide text-gray-600 font-copy"
-                    >
-                        Enabling this option will filter out all events that is
-                        ended from <span class="font-medium">All Events</span>,
-                        <span class="font-medium">Search</span>,
-                        <span class="font-medium">Wallet</span>, and
-                        <span class="font-medium">Saved Events</span>
-                    </p>
-                </div>
-            </app-card>
-        </div>
+                </app-card>
+            </div>
+            <div class="mt-6">
+                <app-card>
+                    <div>
+                        <div class="flex w-full">
+                            <check [formControl]="displayEndedEvents$"></check>
+                        </div>
+                        <p
+                            class="text-sm font-medium text-black font-copy mt-3"
+                        >
+                            Display ended events
+                        </p>
+                        <p
+                            class="text-xs mt-2 tracking-wide text-gray-600 font-copy"
+                        >
+                            Enabling this option will filter out all events that
+                            is ended from
+                            <span class="font-medium">All Events</span>,
+                            <span class="font-medium">Search</span>,
+                            <span class="font-medium">Wallet</span>, and
+                            <span class="font-medium">Saved Events</span>
+                        </p>
+                    </div>
+                </app-card>
+            </div>
+        </ng-container>
         <app-button
             (click)="go()"
             title="SIGN OUT"
