@@ -2,7 +2,7 @@
     <app-navigation-bar title="Settings"></app-navigation-bar>
     <section class="mt-6">
         <app-card *ngIf="(userInfo$ | async) as user" title="Authenticated As">
-            <p class="text-sm text-black font-copy">
+            <p class="text-sm text-black font-copy leading-none truncate mt-2">
                 {{ user.user.firstName }} {{ user.user.lastName }}
             </p>
             <p
