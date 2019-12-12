@@ -1,6 +1,7 @@
 <app-frame [backgroundColor]="'#fff'">
     <app-navigation-bar title="Saved Events"></app-navigation-bar>
     <section class="mt-6" *ngIf="listing$ | async as listing">
+        <app-empty-state *ngIf="listing.length == 0"></app-empty-state>
         <app-horizontal-event-card
             *ngFor="let event of listing; let i = index"
             [posterImage]="event.posterImage"

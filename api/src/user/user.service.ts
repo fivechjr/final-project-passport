@@ -45,7 +45,7 @@ export class UserService {
         p.value = Number(value);
       }
     });
-    return await user.save();
+    return (await user.save()).toObject();
   }
 
   async createUser(user: Partial<UserI>) {
