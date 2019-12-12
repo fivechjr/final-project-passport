@@ -2,21 +2,113 @@
     <app-navigation-bar title="Settings"></app-navigation-bar>
     <section class="mt-6">
         <app-card *ngIf="(userInfo$ | async) as user" title="Authenticated As">
-            <p class="text-sm text-black font-copy leading-none truncate mt-2">
+            <p class="text-sm font-medium text-black font-copy mt-2">
                 {{ user.user.firstName }} {{ user.user.lastName }}
             </p>
             <p
-                class="text-xs text-black leading-none mt-2 tracking-wide text-gray-600 font-copy"
+                class="text-xs font-medium text-black leading-none mt-2 tracking-wide text-gray-600 font-copy"
             >
                 {{ user.user.studentID }}
             </p>
             <p
-                class="text-xs text-black leading-none mt-2 tracking-wide text-gray-600 font-copy"
+                class="text-xs font-medium text-black leading-none mt-2 tracking-wide text-gray-600 font-copy"
             >
                 {{ user.user.faculty }}
             </p>
         </app-card>
-
+        <div class="mt-6">
+            <app-card>
+                <div>
+                    <label class="mb-3 block flex">
+                        <div
+                            class="bg-pink-100 rounded w-5 h-5 p-1 flex justify-center items-center"
+                        >
+                            <input type="checkbox" class="hidden" checked />
+                            <svg
+                                class="w-4 h-4 text-pink-500 pointer-events-none"
+                                viewBox="0 0 172 172"
+                            >
+                                <g
+                                    fill="none"
+                                    stroke-width="none"
+                                    stroke-miterlimit="10"
+                                    font-family="none"
+                                    font-weight="none"
+                                    font-size="none"
+                                    text-anchor="none"
+                                    style="mix-blend-mode:normal"
+                                >
+                                    <path d="M0 172V0h172v172z" />
+                                    <path
+                                        d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                                        fill="currentColor"
+                                        stroke-width="1"
+                                    />
+                                </g>
+                            </svg>
+                        </div>
+                    </label>
+                    <p
+                        class="text-sm font-medium text-black font-copy truncate mt-2"
+                    >
+                        Display only "Engineering" events
+                    </p>
+                    <p
+                        class="text-xs mt-2 tracking-wide text-gray-600 font-copy"
+                    >
+                        Enabling this option will filter out all events from
+                        "All Events" and "Search" &mdash; except events from
+                        <span class="font-medium">Faculty of Engineering</span>
+                    </p>
+                </div>
+            </app-card>
+        </div>
+        <div class="mt-6">
+            <app-card>
+                <div>
+                    <label class="mb-3 block flex">
+                        <div
+                            class="bg-pink-100 rounded w-5 h-5 p-1 flex justify-center items-center"
+                        >
+                            <input type="checkbox" class="hidden" checked />
+                            <svg
+                                class="w-4 h-4 text-pink-500 pointer-events-none"
+                                viewBox="0 0 172 172"
+                            >
+                                <g
+                                    fill="none"
+                                    stroke-width="none"
+                                    stroke-miterlimit="10"
+                                    font-family="none"
+                                    font-weight="none"
+                                    font-size="none"
+                                    text-anchor="none"
+                                    style="mix-blend-mode:normal"
+                                >
+                                    <path d="M0 172V0h172v172z" />
+                                    <path
+                                        d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                                        fill="currentColor"
+                                        stroke-width="1"
+                                    />
+                                </g>
+                            </svg>
+                        </div>
+                    </label>
+                    <p
+                        class="text-sm font-medium text-black font-copy truncate mt-2"
+                    >
+                        Display ended events
+                    </p>
+                    <p
+                        class="text-xs mt-2 tracking-wide text-gray-600 font-copy"
+                    >
+                        Enabling this option will filter out all events that is
+                        ended from All Events, Search, Wallet, and Saved
+                    </p>
+                </div>
+            </app-card>
+        </div>
         <app-button
             (click)="go()"
             title="SIGN OUT"
