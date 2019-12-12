@@ -19,7 +19,7 @@
                     ></ion-icon>
                 </div>
                 <p
-                    class="font-sans text-sm py-4 bg-transparent w-full truncate"
+                    class="font-copy text-sm py-4 bg-transparent w-full truncate"
                     [style.maxWidth]="(navigationBackground | async) ? '100%' : '0%'"
                     [style.opacity]="(navigationBackground | async) ? '1' : '0'"
                     [style.transition]="'all .75s'"
@@ -39,7 +39,7 @@
                     <img [src]="event.posterImage" alt="" class="w-full" />
                 </div>
             </div>
-            <header class="py-6 flex justify-between font-sans">
+            <header class="py-6 flex justify-between font-copy">
                 <app-page-title
                     [title]="event.title"
                     [subtitle]="event.startDate | relativeTime"
