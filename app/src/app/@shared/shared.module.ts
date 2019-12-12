@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ButtonComponent } from './button/button.component';
+import { CardComponent } from './card/card.component';
 import { EmptyStateComponent } from './empty-state/empty-state.component';
 import { ExpandButtonComponent } from './expand-button/expand-button.component';
 import { FrameComponent } from './frame/frame.component';
@@ -23,6 +24,7 @@ import { VerticalEventCardComponent } from './vertical-event-card/vertical-event
     providers: [ToastService],
     declarations: [
         ButtonComponent,
+        CardComponent,
         EmptyStateComponent,
         ExpandButtonComponent,
         FormatDatePipe,
@@ -38,6 +40,7 @@ import { VerticalEventCardComponent } from './vertical-event-card/vertical-event
     ],
     exports: [
         ButtonComponent,
+        CardComponent,
         EmptyStateComponent,
         ExpandButtonComponent,
         FormatDatePipe,
