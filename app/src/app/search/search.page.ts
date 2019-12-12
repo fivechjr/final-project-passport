@@ -40,9 +40,7 @@ export class SearchPage implements AfterViewInit, OnInit, OnDestroy {
                 this.listing$.next(v);
             });
 
-        this.searchKey
-            .pipe(untilComponentDestroyed(this))
-            .subscribe(v => console.log);
+        this.searchKey.pipe(untilComponentDestroyed(this)).subscribe();
         this.searchKey
             .pipe(
                 untilComponentDestroyed(this),

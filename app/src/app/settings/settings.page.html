@@ -1,8 +1,8 @@
 <app-frame [backgroundColor]="'#fff'">
     <app-navigation-bar title="Settings"></app-navigation-bar>
     <section class="mt-6">
-        <app-card *ngIf="(userInfo$ | async) as user" title="Authenticated As">
-            <p class="text-sm font-medium text-black font-copy mt-2">
+        <app-card *ngIf="(userInfo$ | async) as user">
+            <p class="text-sm font-medium text-pink-500 font-copy">
                 {{ user.user.firstName }} {{ user.user.lastName }}
             </p>
             <p
@@ -19,37 +19,9 @@
         <div class="mt-6">
             <app-card>
                 <div>
-                    <label class="mb-3 block flex">
-                        <div
-                            class="bg-pink-100 rounded w-5 h-5 p-1 flex justify-center items-center"
-                        >
-                            <input type="checkbox" class="hidden" checked />
-                            <svg
-                                class="w-4 h-4 text-pink-500 pointer-events-none"
-                                viewBox="0 0 172 172"
-                            >
-                                <g
-                                    fill="none"
-                                    stroke-width="none"
-                                    stroke-miterlimit="10"
-                                    font-family="none"
-                                    font-weight="none"
-                                    font-size="none"
-                                    text-anchor="none"
-                                    style="mix-blend-mode:normal"
-                                >
-                                    <path d="M0 172V0h172v172z" />
-                                    <path
-                                        d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
-                                        fill="currentColor"
-                                        stroke-width="1"
-                                    />
-                                </g>
-                            </svg>
-                        </div>
-                    </label>
+                    <check [formControl]="displayOnlyFacultyEvents$"></check>
                     <p
-                        class="text-sm font-medium text-black font-copy truncate mt-2"
+                        class="text-sm font-medium text-black font-copy truncate mt-3"
                     >
                         Display only "Engineering" events
                     </p>
@@ -57,7 +29,9 @@
                         class="text-xs mt-2 tracking-wide text-gray-600 font-copy"
                     >
                         Enabling this option will filter out all events from
-                        "All Events" and "Search" &mdash; except events from
+                        <span class="font-medium">All Events</span> and
+                        <span class="font-medium">Search</span> &mdash; except
+                        events from
                         <span class="font-medium">Faculty of Engineering</span>
                     </p>
                 </div>
@@ -66,37 +40,9 @@
         <div class="mt-6">
             <app-card>
                 <div>
-                    <label class="mb-3 block flex">
-                        <div
-                            class="bg-pink-100 rounded w-5 h-5 p-1 flex justify-center items-center"
-                        >
-                            <input type="checkbox" class="hidden" checked />
-                            <svg
-                                class="w-4 h-4 text-pink-500 pointer-events-none"
-                                viewBox="0 0 172 172"
-                            >
-                                <g
-                                    fill="none"
-                                    stroke-width="none"
-                                    stroke-miterlimit="10"
-                                    font-family="none"
-                                    font-weight="none"
-                                    font-size="none"
-                                    text-anchor="none"
-                                    style="mix-blend-mode:normal"
-                                >
-                                    <path d="M0 172V0h172v172z" />
-                                    <path
-                                        d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
-                                        fill="currentColor"
-                                        stroke-width="1"
-                                    />
-                                </g>
-                            </svg>
-                        </div>
-                    </label>
+                    <check [formControl]="displayEndedEvents$"></check>
                     <p
-                        class="text-sm font-medium text-black font-copy truncate mt-2"
+                        class="text-sm font-medium text-black font-copy truncate mt-3"
                     >
                         Display ended events
                     </p>
