@@ -2,21 +2,26 @@
     <app-navigation-bar title="Settings"></app-navigation-bar>
     <section class="mt-6">
         <ng-container *ngIf="(userInfo$ | async) as user">
-            <app-card>
-                <p class="text-sm font-medium text-pink-500 font-copy">
-                    {{ user.user.firstName }} {{ user.user.lastName }}
-                </p>
-                <p
-                    class="text-xs font-medium text-black leading-none mt-2 tracking-wide text-gray-600 font-copy"
-                >
-                    {{ user.user.studentID }}
-                </p>
-                <p
-                    class="text-xs font-medium text-black leading-none mt-2 tracking-wide text-gray-600 font-copy"
-                >
-                    {{ user.user.faculty }}
-                </p>
-            </app-card>
+            <div class="flex flex-col items-center">
+                <profile-picture></profile-picture>
+            </div>
+            <div class="mt-6">
+                <app-card>
+                    <p class="text-sm font-medium text-pink-500 font-copy">
+                        {{ user.user.firstName }} {{ user.user.lastName }}
+                    </p>
+                    <p
+                        class="text-xs font-medium text-black leading-none mt-2 tracking-wide text-gray-600 font-copy"
+                    >
+                        {{ user.user.studentID }}
+                    </p>
+                    <p
+                        class="text-xs font-medium text-black leading-none mt-2 tracking-wide text-gray-600 font-copy"
+                    >
+                        {{ user.user.faculty }}
+                    </p>
+                </app-card>
+            </div>
             <div class="mt-6">
                 <app-card>
                     <div>

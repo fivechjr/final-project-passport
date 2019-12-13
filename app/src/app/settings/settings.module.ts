@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SharedModule } from '../@shared/shared.module';
 import { CheckComponent } from './components/check/check.component';
+import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { SettingsPage } from './settings.page';
 
 @NgModule({
@@ -14,7 +15,7 @@ import { SettingsPage } from './settings.page';
         IonicModule,
         SharedModule,
     ],
-    declarations: [SettingsPage, CheckComponent],
+    declarations: [SettingsPage, CheckComponent, ProfilePictureComponent],
     exports: [SettingsPage],
 })
 export class SettingsPageModule {}

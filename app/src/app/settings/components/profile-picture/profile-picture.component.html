@@ -1,0 +1,9 @@
+<div class="w-full flex justify-center mb-6">
+    <img class="rounded-full" src="https://i.pravatar.cc/300" alt="" />
+</div>
+<app-expand-button
+    title="CHANGE PICTURE"
+    icon="camera"
+    (click)="triggerFileInput()"
+></app-expand-button>
+<input #fileInput (change)="fileUpload()" type="file" class="hidden" />
