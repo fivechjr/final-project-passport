@@ -1,13 +1,13 @@
 <template>
     <div class="text-sm my-10 w-full flex flex-col items-center">
-        <input type="file" @change="go" />
+        <input class="select-none" type="file" @change="go" />
         <div class="p-10 border rounded-lg my-10">
             <div id="code" class="flex overflow-scroll">
                 <pre>{{ result }}</pre>
             </div>
         </div>
         <button
-            class="flex items-center justify-center bg-black px-3 py-2 rounded"
+            class="select-none flex items-center justify-center bg-black px-3 py-2 rounded"
         >
             <span
                 class="text-xs font-copy font-medium tracking-widest leading-normal text-white"
