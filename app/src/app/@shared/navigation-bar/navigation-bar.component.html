@@ -1,7 +1,8 @@
 <header
-    class="-mx-6 px-6 sticky shadow-2xl z-20"
+    class="-mx-6 px-6 sticky z-20"
     style="top: 20px"
     [style.background]="backgroundColor"
+    [class.elevated]="isElevated | async"
 >
     <div class="flex flex-row items-center">
         <p

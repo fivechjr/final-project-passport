@@ -1,0 +1,6 @@
+header {
+    transition: 0.2s all;
+    &.elevated {
+        box-shadow: 0 25px 50px 0px rgba(0, 0, 0, 0.075);
+    }
+}
