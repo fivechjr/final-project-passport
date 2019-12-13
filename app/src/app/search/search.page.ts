@@ -28,7 +28,7 @@ export class SearchPage implements AfterViewInit, OnInit, OnDestroy {
     @ViewChild('search', { static: true }) searchElement;
 
     constructor(private location: Location, private apiService: ApiService) {
-        this.listing$ = new BehaviorSubject([]);
+        this.listing$ = new BehaviorSubject(undefined);
     }
 
     ngOnDestroy() {}
@@ -46,14 +46,15 @@ export class SearchPage implements AfterViewInit, OnInit, OnDestroy {
                 untilComponentDestroyed(this),
                 debounceTime(300),
                 distinctUntilChanged(),
-                switchMap(s =>
-                    this.apiService
+                switchMap(s => {
+                    this.listing$.next(undefined);
+                    return this.apiService
                         .get<any>('/event/search?key=' + s)
                         .pipe(
                             takeUntil(this.searchKey),
                             untilComponentDestroyed(this),
-                        ),
-                ),
+                        );
+                }),
             )
             .subscribe(v => {
                 this.listing$.next(v);

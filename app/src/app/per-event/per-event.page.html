@@ -1,4 +1,4 @@
-<ng-container *ngIf="event$ | async as event">
+<ng-container *ngIf="event$ | async as event; else loading">
     <app-frame [withFooter]="false" [backgroundColor]="event.backgroundColor">
         <header
             id="header"
@@ -97,3 +97,18 @@
         </main>
     </app-frame>
 </ng-container>
+
+<ng-template #loading>
+    <app-frame
+        [withFooter]="false"
+        [withBottomSpacing]="false"
+        backgroundColor="#ffffff"
+    >
+        <div
+            class="w-full flex justify-center items-center"
+            style="height: calc(100vh - 20px)"
+        >
+            <ion-spinner name="crescent"></ion-spinner>
+        </div>
+    </app-frame>
+</ng-template>

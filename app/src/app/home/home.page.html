@@ -20,7 +20,7 @@
         </div>
         <!-- // Search Icon -->
     </header>
-    <section *ngIf="listing$ | async as listing">
+    <section *ngIf="(listing$ | async) as listing; else loading">
         <div class="w-full grid-container">
             <app-vertical-event-card
                 *ngFor="let event of listing; let i = index"
@@ -33,4 +33,9 @@
             ></app-vertical-event-card>
         </div>
     </section>
+    <ng-template #loading>
+        <div class="w-full flex justify-center">
+            <ion-spinner name="crescent"></ion-spinner>
+        </div>
+    </ng-template>
 </app-frame>

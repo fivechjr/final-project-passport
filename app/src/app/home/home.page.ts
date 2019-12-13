@@ -12,7 +12,7 @@ export class HomePage implements OnInit, OnDestroy {
     private listing$: BehaviorSubject<any>;
     public today: Date = new Date();
     constructor(private service: ApiService) {
-        this.listing$ = new BehaviorSubject([]);
+        this.listing$ = new BehaviorSubject(undefined);
     }
     ngOnDestroy() {}
     ngOnInit() {
