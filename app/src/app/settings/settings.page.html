@@ -42,7 +42,7 @@
                             <span class="font-medium">Search</span> &mdash;
                             except events from
                             <span class="font-medium"
-                                >Faculty of Engineering</span
+                                >{{ user.user.faculty }}</span
                             >
                         </p>
                     </div>
@@ -64,10 +64,8 @@
                         >
                             Enabling this option will filter out all events that
                             is ended from
-                            <span class="font-medium">All Events</span>,
-                            <span class="font-medium">Search</span>,
-                            <span class="font-medium">Wallet</span>, and
-                            <span class="font-medium">Saved Events</span>
+                            <span class="font-medium">All Events</span> and
+                            <span class="font-medium">Search</span>
                         </p>
                     </div>
                 </app-card>
