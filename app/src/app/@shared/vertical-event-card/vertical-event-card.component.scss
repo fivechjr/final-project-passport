@@ -1,0 +1,11 @@
+div {
+    cursor: pointer;
+    img {
+        opacity: 1;
+    }
+    &:active {
+        img {
+            opacity: 0.5;
+        }
+    }
+}
