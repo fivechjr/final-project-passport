@@ -4,10 +4,14 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { AuthService } from 'src/auth/auth.service';
+import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly userService: UserService,
+  ) {}
   async use(req: any, res: any, next: () => void) {
     if (!req.headers.authorization) {
       throw new UnauthorizedException('No JWT');
@@ -17,7 +21,10 @@ export class AuthMiddleware implements NestMiddleware {
       const verify = await this.authService.decode(
         req.headers.authorization.split(' ')[1],
       );
-      req.userID = verify.userID;
+      const userID = verify.userID;
+      const user = await this.userService.getUserByID(userID);
+      req.user = user;
+      req.userID = userID;
       next();
     } catch (e) {
       throw new UnauthorizedException('Invalid Credentials');

@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { ContentPreferences, User } from 'src/decorators/user.decorator';
 import { CreateEventDTO } from './event.dto';
 import { EventService } from './event.service';
 
@@ -7,8 +8,12 @@ export class EventController {
   constructor(private readonly eventService: EventService) {}
 
   @Get('search')
-  search(@Query('key') key: string) {
-    return this.eventService.searchByEventTitle(key);
+  search(
+    @User() userInfo,
+    @ContentPreferences() contentPrefs,
+    @Query('key') key: string,
+  ) {
+    return this.eventService.searchByEventTitle(userInfo, contentPrefs, key);
   }
 
   @Get(':id')
@@ -22,7 +27,7 @@ export class EventController {
   }
 
   @Get()
-  getAll() {
-    return this.eventService.getAll();
+  getAll(@User() userInfo, @ContentPreferences() contentPrefs) {
+    return this.eventService.getAll(userInfo, contentPrefs);
   }
 }

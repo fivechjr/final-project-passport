@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
 import { CryptoModule } from './crypto/crypto.module';
+import { EventController } from './event/event.controller';
 import { EventModule } from './event/event.module';
 import { AuthMiddleware } from './middlewares/auth.middleware';
 import { ResponseController } from './response/response.controller';
@@ -36,6 +37,6 @@ export class AppModule {
     consumer
       .apply(AuthMiddleware)
       .exclude({ path: 'user', method: RequestMethod.POST }) // Excl. Registration
-      .forRoutes(UserController, ResponseController);
+      .forRoutes(EventController, UserController, ResponseController);
   }
 }
