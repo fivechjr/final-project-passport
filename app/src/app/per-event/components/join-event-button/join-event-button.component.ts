@@ -15,6 +15,7 @@ export class JoinEventButtonComponent implements OnInit, OnDestroy {
     @Input() backgroundColor: string;
 
     public isJoined: BehaviorSubject<boolean>;
+    public isMakingRequest: BehaviorSubject<boolean>;
 
     constructor(
         private readonly apiService: ApiService,
@@ -22,6 +23,7 @@ export class JoinEventButtonComponent implements OnInit, OnDestroy {
         private readonly toastService: ToastService,
     ) {
         this.isJoined = new BehaviorSubject(false);
+        this.isMakingRequest = new BehaviorSubject(false);
     }
 
     ngOnDestroy() {}
@@ -36,10 +38,12 @@ export class JoinEventButtonComponent implements OnInit, OnDestroy {
     }
 
     joinEvent() {
+        this.isMakingRequest.next(true);
         this.apiService
             .post<any>('/response/' + this.eventID)
             .pipe(untilComponentDestroyed(this))
             .subscribe(_ => {
+                this.isMakingRequest.next(false);
                 this.authService.refresh();
                 this.toastService.showToast('Registration Completed');
             });

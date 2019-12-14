@@ -14,6 +14,7 @@ export class SaveEventButtonComponent implements OnInit, OnDestroy {
     @Input() eventID: string;
 
     public isBookmarked: BehaviorSubject<boolean>;
+    public isMakingRequest: BehaviorSubject<boolean>;
 
     constructor(
         private readonly apiService: ApiService,
@@ -21,6 +22,7 @@ export class SaveEventButtonComponent implements OnInit, OnDestroy {
         private readonly toastService: ToastService,
     ) {
         this.isBookmarked = new BehaviorSubject(false);
+        this.isMakingRequest = new BehaviorSubject(false);
     }
 
     ngOnDestroy() {}
@@ -32,11 +34,13 @@ export class SaveEventButtonComponent implements OnInit, OnDestroy {
                     this.isBookmarked.next(
                         v.user.bookmarks.includes(this.eventID),
                     );
+                    this.isMakingRequest.next(false);
                 }
             });
     }
 
     addBookmark() {
+        this.isMakingRequest.next(true);
         this.apiService
             .post<any>('/user/bookmark/' + this.eventID)
             .pipe(untilComponentDestroyed(this))
@@ -47,6 +51,7 @@ export class SaveEventButtonComponent implements OnInit, OnDestroy {
     }
 
     removeBookmark() {
+        this.isMakingRequest.next(true);
         this.apiService
             .delete<any>('/user/bookmark/' + this.eventID)
             .pipe(untilComponentDestroyed(this))

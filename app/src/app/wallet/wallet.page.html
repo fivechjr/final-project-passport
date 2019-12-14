@@ -3,7 +3,7 @@
         title="My Wallet"
         backgroundColor="#fff"
     ></app-navigation-bar>
-    <section class="mt-6" *ngIf="listing$ | async as listing">
+    <section class="mt-6" *ngIf="listing$ | async as listing; else loading">
         <app-empty-state *ngIf="listing.length == 0"></app-empty-state>
         <app-horizontal-event-card
             *ngFor="let event of listing; let i = index"

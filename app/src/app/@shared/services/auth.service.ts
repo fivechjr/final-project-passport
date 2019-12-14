@@ -34,11 +34,16 @@ export class AuthService {
 
         if (!this.isAuthenticated$.getValue()) {
             this.isAuthenticated$.next(true);
-            console.log('Auth');
             this.toastService.showToast(
                 'Authenticated as ' + userObject.user.firstName,
             );
         }
+    }
+
+    setProfileImageURL(file: string) {
+        const userObject = this.userInfo$.getValue();
+        userObject.user.profileImageURL = file;
+        this.userInfo$.next(userObject);
     }
 
     clearUserInfo() {

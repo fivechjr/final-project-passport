@@ -13,10 +13,10 @@ import { getContrastTextColor } from '../utils';
             transition(':enter', [
                 style({
                     opacity: '0',
-                    transform: 'translateX(-50%) translateY(-25%)',
+                    transform: 'translateX(-50%) translateY(-50%)',
                 }),
                 animate(
-                    '150ms ease-in-out',
+                    '250ms ease-in-out',
                     style({
                         opacity: '1',
                         transform: 'translateX(-50%) translateY(0%)',
@@ -25,10 +25,10 @@ import { getContrastTextColor } from '../utils';
             ]),
             transition(':leave', [
                 animate(
-                    '150ms ease-in-out',
+                    '250ms ease-in-out',
                     style({
                         opacity: '0',
-                        transform: 'translateX(-50%) translateY(-25%)',
+                        transform: 'translateX(-50%) translateY(-50%)',
                     }),
                 ),
             ]),

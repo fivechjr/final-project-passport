@@ -1,12 +1,14 @@
 <app-expand-button
-    *ngIf="!(isBookmarked | async)"
+    *ngIf="!(isBookmarked | async) && !(isMakingRequest | async)"
     (click)="addBookmark()"
     title="SAVE EVENT"
     icon="bookmark"
 ></app-expand-button>
 
+<ion-spinner *ngIf="isMakingRequest | async" name="dots"></ion-spinner>
+
 <app-expand-button
-    *ngIf="isBookmarked | async"
+    *ngIf="(isBookmarked | async) && !(isMakingRequest | async)"
     (click)="removeBookmark()"
     color="red"
     title="UNSAVE EVENT"

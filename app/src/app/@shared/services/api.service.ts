@@ -7,9 +7,10 @@ import { map } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class ApiService {
-    static ROOT = 'https://cu-passport-api-4rpvurby2a-an.a.run.app'; // Tokyo
+    // static ROOT = 'https://cu-passport-api-4rpvurby2a-an.a.run.app'; // Tokyo
     // static ROOT = 'https://cu-passport-api-production-4rpvurby2a-uc.a.run.app'; // Iowa
-    // static ROOT = 'http://localhost:3000';
+    static ROOT = 'http://localhost:3000';
+    // static ROOT = 'http://34.87.13.76'; // Google Kubernates Engine
 
     constructor(private http: HttpClient) {}
 
@@ -30,6 +31,10 @@ export class ApiService {
             ...params,
             observe: 'response',
         });
+    }
+
+    formData<T>(url, params): Observable<T> {
+        return this.http.post<T>(ApiService.ROOT + url, params);
     }
 
     patch<T>(
