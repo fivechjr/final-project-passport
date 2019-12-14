@@ -13,6 +13,7 @@ import { ResponseController } from './response/response.controller';
 import { ResponseModule } from './response/response.module';
 import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { UserModule } from './user/user.module';
       inject: [ConfigService],
     }),
     CryptoModule,
+    FileModule,
   ],
   controllers: [AppController],
   providers: [AppService],

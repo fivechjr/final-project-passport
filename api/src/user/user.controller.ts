@@ -1,4 +1,14 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { UserID } from 'src/decorators/user.decorator';
 import { CreateUserDTO, UpdateContentPreferenceDTO } from './user.dto';
 import { UserService } from './user.service';
@@ -52,5 +62,11 @@ export class UserController {
       contentPreference.key,
       contentPreference.value,
     );
+  }
+
+  @Post('profile-picture')
+  @UseInterceptors(FileInterceptor('file'))
+  setProfilePicture(@UserID() userID: string, @UploadedFile() file) {
+    return this.userService.setProfilePicture(userID, file);
   }
 }

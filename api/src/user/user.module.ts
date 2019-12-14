@@ -5,6 +5,7 @@ import { ConfigService } from 'src/config/config.service';
 import { CryptoModule } from 'src/crypto/crypto.module';
 import { CryptoService } from 'src/crypto/crypto.service';
 import { EventModule } from 'src/event/event.module';
+import { FileModule } from 'src/file/file.module';
 import { User, UserSchema } from 'src/models/user.model';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
@@ -15,6 +16,7 @@ import { UserService } from './user.service';
     MongooseModule.forFeature([{ name: User, schema: UserSchema }]),
     CryptoModule,
     EventModule,
+    FileModule,
   ],
   controllers: [UserController],
   providers: [ConfigService, UserService, CryptoService],

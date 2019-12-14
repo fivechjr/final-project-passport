@@ -6,6 +6,7 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CryptoService } from 'src/crypto/crypto.service';
+import { FileService } from 'src/file/file.service';
 import { ContentPreferenceI, User, UserI } from 'src/models/user.model';
 
 @Injectable()
@@ -13,6 +14,7 @@ export class UserService {
   constructor(
     @InjectModel(User) private readonly userModel: Model<UserI>,
     private readonly cryptoService: CryptoService,
+    private readonly fileService: FileService,
   ) {}
 
   async getAll() {
@@ -23,7 +25,10 @@ export class UserService {
     return await this.userModel.findOne({ studentID }).exec();
   }
 
-  async getUserByID(userID: string, toObject: boolean = false) {
+  async getUserByID(
+    userID: string,
+    toObject: boolean = false,
+  ): Promise<Partial<Model<UserI>>> {
     if (toObject) {
       try {
         const user = await (
@@ -219,5 +224,13 @@ export class UserService {
     };
 
     return faculties[Number(studentID.slice(-2))];
+  }
+
+  async setProfilePicture(userID, file) {
+    const profileImageURL = await this.fileService.uploadFile(userID, file);
+    const user = await this.getUserByID(userID);
+    user.profileImageURL = profileImageURL;
+    await user.save();
+    return { profileImageURL };
   }
 }

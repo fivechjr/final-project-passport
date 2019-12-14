@@ -13,6 +13,7 @@ export interface UserI {
   lastName: string;
   studentID: string;
   password: string;
+  profileImageURL?: string;
   faculty: string;
   bookmarks: string[];
   events: string[];
@@ -25,6 +26,11 @@ export const UserSchema = new Schema({
   studentID: String,
   faculty: String,
   password: String,
+  profileImageURL: {
+    type: String,
+    required: false,
+    default: null,
+  },
   bookmarks: [
     {
       type: Schema.Types.ObjectId,
@@ -50,7 +56,7 @@ export const UserSchema = new Schema({
 });
 
 UserSchema.set('toObject', {
-  transform: (doc, ret, opt) => {
+  transform: (_, ret, __) => {
     delete ret.password;
     return ret;
   },
