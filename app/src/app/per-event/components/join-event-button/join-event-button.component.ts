@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as dayjs from 'dayjs';
+import QRCode from 'qrcode';
 import { BehaviorSubject } from 'rxjs';
 import { untilComponentDestroyed } from 'src/app/@shared/operators';
 import { ApiService } from 'src/app/@shared/services/api.service';
@@ -20,6 +21,7 @@ export class JoinEventButtonComponent implements OnInit, OnDestroy {
     public isMakingRequest: BehaviorSubject<boolean>;
     public isAfter = false;
     public userID$ = new BehaviorSubject(undefined);
+    public QR = new BehaviorSubject('');
 
     constructor(
         private readonly apiService: ApiService,
@@ -53,5 +55,13 @@ export class JoinEventButtonComponent implements OnInit, OnDestroy {
                 this.authService.refresh();
                 this.toastService.showToast('Registration Completed');
             });
+    }
+
+    async generate() {
+        const QR = await QRCode.toDataURL(
+            this.userID$.getValue() + ':' + this.eventID,
+            { margin: 4, quality: 1, width: 500, scale: 10 },
+        );
+        this.QR.next(QR);
     }
 }

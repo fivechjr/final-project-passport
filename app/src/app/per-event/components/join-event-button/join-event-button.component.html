@@ -5,12 +5,19 @@
     [backgroundColor]="backgroundColor"
 ></app-button>
 
-<app-button
-    *ngIf="(isJoined | async) && !isAfter"
-    title="SHOW QR"
-    [backgroundColor]="backgroundColor"
-></app-button>
-
+<ng-container *ngIf="(isJoined | async) && !isAfter">
+    <app-button
+        title="SHOW QR"
+        (click)="generate()"
+        [backgroundColor]="backgroundColor"
+    ></app-button>
+    <img
+        draggable="false"
+        *ngIf="QR | async"
+        class="w-full mt-6 rounded elevated"
+        [src]="QR | async"
+    />
+</ng-container>
 <app-button
     *ngIf="isAfter"
     title="EVENT ENDED"
