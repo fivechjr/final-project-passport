@@ -30,4 +30,9 @@ export class EventController {
   getAll(@User() userInfo, @ContentPreferences() contentPrefs) {
     return this.eventService.getAll(userInfo, contentPrefs);
   }
+
+  @Post('_')
+  insertMany(@Body() events: CreateEventDTO[]) {
+    return this.eventService.insertMany(events);
+  }
 }

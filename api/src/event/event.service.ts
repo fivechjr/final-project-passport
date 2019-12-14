@@ -56,4 +56,8 @@ export class EventService {
       .limit(10)
       .exec();
   }
+
+  async insertMany(events: EventI[]) {
+    return await this.eventModel.insertMany(events);
+  }
 }
