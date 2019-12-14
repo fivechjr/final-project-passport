@@ -7,7 +7,8 @@ import { map } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class ApiService {
-    static ROOT = 'https://cu-passport-api-4rpvurby2a-an.a.run.app';
+    static ROOT = 'https://cu-passport-api-4rpvurby2a-an.a.run.app'; // Tokyo
+    // static ROOT = 'https://cu-passport-api-production-4rpvurby2a-uc.a.run.app'; // Iowa
     // static ROOT = 'http://localhost:3000';
 
     constructor(private http: HttpClient) {}

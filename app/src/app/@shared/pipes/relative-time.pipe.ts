@@ -11,6 +11,12 @@ export class RelativeTimePipe implements PipeTransform {
         let diff = (day.getTime() - today.getTime()) / (1000 * 3600 * 24);
         // @ts-ignore
         const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
-        return String(rtf.format(diff, 'day')).toUpperCase();
+        return this.formatText(String(rtf.format(diff, 'day')));
+    }
+
+    formatText(s: string) {
+        return s.replace(/\w+/g, function(w) {
+            return w[0].toUpperCase() + w.slice(1).toLowerCase();
+        });
     }
 }

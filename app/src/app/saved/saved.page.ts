@@ -12,7 +12,7 @@ export class SavedPage implements OnInit, OnDestroy {
     private listing$: BehaviorSubject<any>;
 
     constructor(private apiService: ApiService) {
-        this.listing$ = new BehaviorSubject([]);
+        this.listing$ = new BehaviorSubject(undefined);
     }
 
     ngOnDestroy() {}
