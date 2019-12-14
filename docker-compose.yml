@@ -10,12 +10,10 @@ services:
       - ./api:/app
     ports:
       - 3000:3000
-    environment:
-      MONGO_URL: mongodb://mongo/cu-passport
-      SECRET: secret
-      NODE_ENV: development
     working_dir: /app
     command: ["yarn", "start:dev"]
+    env_file:
+      - ./api/.env
   mongo:
     container_name: cu-passport-mongo
     image: mongo
