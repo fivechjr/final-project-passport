@@ -1,9 +1,11 @@
 <button
+    [disabled]="disabled"
     class="w-full flex justify-center items-center px-3 py-2 rounded"
     [ngStyle]="{ background: backgroundColor }"
 >
     <span
-        class="text-xs font-copy font-medium tracking-widest leading-normal text-white"
+        class="text-xs font-copy font-medium tracking-widest leading-normal"
+        [style.color]="textColor"
         >{{ title }}</span
     >
 </button>

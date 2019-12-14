@@ -53,11 +53,13 @@ export class SettingsPage implements OnInit, OnDestroy {
         this.authService.userInfo$
             .pipe(
                 untilComponentDestroyed(this),
-                distinctUntilChanged(
-                    (prev, curr) =>
+                distinctUntilChanged((prev, curr) => {
+                    if (!curr) return false;
+                    return (
                         prev.user.contentPreferences ===
-                        curr.user.contentPreferences,
-                ),
+                        curr.user.contentPreferences
+                    );
+                }),
             )
             .subscribe(v => {
                 if (v && v.user) {

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { getContrastTextColor } from '../utils';
 
 @Component({
     selector: 'app-button',
@@ -8,7 +9,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ButtonComponent implements OnInit {
     @Input() backgroundColor: string = '#000000';
     @Input() title: string = '';
+    @Input() disabled = false;
 
+    public textColor: string = '#000000';
     constructor() {}
-    ngOnInit() {}
+    ngOnInit() {
+        this.textColor = getContrastTextColor(this.backgroundColor);
+    }
 }

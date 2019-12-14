@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import * as dayjs from 'dayjs';
 import { BehaviorSubject } from 'rxjs';
 import { untilComponentDestroyed } from 'src/app/@shared/operators';
 import { ApiService } from 'src/app/@shared/services/api.service';
@@ -13,9 +14,12 @@ import { ToastService } from 'src/app/@shared/services/toast.service';
 export class JoinEventButtonComponent implements OnInit, OnDestroy {
     @Input() eventID: string;
     @Input() backgroundColor: string;
+    @Input() endDate: string;
 
     public isJoined: BehaviorSubject<boolean>;
     public isMakingRequest: BehaviorSubject<boolean>;
+    public isAfter = false;
+    public userID$ = new BehaviorSubject(undefined);
 
     constructor(
         private readonly apiService: ApiService,
@@ -28,11 +32,13 @@ export class JoinEventButtonComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {}
     ngOnInit() {
+        this.isAfter = dayjs().isAfter(dayjs(this.endDate));
         this.authService.userInfo$
             .pipe(untilComponentDestroyed(this))
             .subscribe(v => {
                 if (v && v.user) {
                     this.isJoined.next(v.user.events.includes(this.eventID));
+                    this.userID$.next(v.user._id);
                 }
             });
     }

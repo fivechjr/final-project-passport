@@ -6,7 +6,7 @@ export const hexToComponent = hex => {
               g: parseInt(result[2], 16),
               b: parseInt(result[3], 16),
           }
-        : null;
+        : { r: 0, g: 0, b: 0 };
 };
 
 export const getContrastTextColor = (backgroundColor: string) => {

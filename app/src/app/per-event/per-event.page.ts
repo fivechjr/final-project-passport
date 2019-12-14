@@ -15,6 +15,7 @@ import { getContrastTextColor } from '../@shared/utils';
 export class PerEventPage implements OnInit, OnDestroy {
     public navigationBackground: BehaviorSubject<boolean>;
     public eventID: string;
+    public userID$ = new BehaviorSubject(undefined);
     public event$: Subject<any> = new Subject();
     public fallbackBackground: string = '#3182ce';
 
@@ -41,6 +42,13 @@ export class PerEventPage implements OnInit, OnDestroy {
     ngOnDestroy() {}
     ngOnInit() {
         this.eventID = this.route.snapshot.paramMap.get('id');
+        this.authService.userInfo$
+            .pipe(untilComponentDestroyed(this))
+            .subscribe(v => {
+                if (v && v.user) {
+                    this.userID$.next(v.user.id);
+                }
+            });
         this.service
             .get<any>('/event/' + this.eventID)
             .pipe(untilComponentDestroyed(this))

@@ -1,12 +1,19 @@
 <app-button
-    *ngIf="!(isJoined | async)"
+    *ngIf="!(isJoined | async) && !isAfter"
     (click)="joinEvent()"
     title="JOIN EVENT"
     [backgroundColor]="backgroundColor"
 ></app-button>
 
 <app-button
-    *ngIf="isJoined | async"
+    *ngIf="(isJoined | async) && !isAfter"
     title="SHOW QR"
     [backgroundColor]="backgroundColor"
+></app-button>
+
+<app-button
+    *ngIf="isAfter"
+    title="EVENT ENDED"
+    backgroundColor="#555555"
+    [disabled]="true"
 ></app-button>

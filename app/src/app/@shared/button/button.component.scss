@@ -3,6 +3,11 @@ button {
     // transition: 0.15s all;
     box-shadow: 0 30px 40px -5px rgba(0, 0, 0, 0.1),
         0 10px 10px -5px rgba(0, 0, 0, 0.05);
+    &:disabled {
+        box-shadow: none !important;
+        opacity: 1 !important;
+        cursor: default !important;
+    }
     &:active {
         opacity: 0.5;
         box-shadow: none;
