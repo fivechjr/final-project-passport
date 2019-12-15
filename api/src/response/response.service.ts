@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { flatten, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { EventService } from 'src/event/event.service';
@@ -19,6 +19,20 @@ export class ResponseService {
 
   getByEventID(eventID: string) {
     return this.responseModel.findOne({ eventID }).exec();
+  }
+
+  async getResponseByEventID(eventID: string) {
+    // ! Refactor this to ExportService
+    const ret = await this.responseModel
+      .findOne({ eventID })
+      .populate('eventID')
+      .populate(
+        'users.userID',
+        'firstName lastName studentID, faculty, profileImageURL',
+      )
+      .exec();
+    const z = await ret.toObject();
+    return flatten(z.users);
   }
 
   async createResponse(userID: string, eventID: string) {

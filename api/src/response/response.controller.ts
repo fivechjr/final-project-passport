@@ -18,4 +18,9 @@ export class ResponseController {
   ) {
     return this.responseService.createResponse(userID, eventID);
   }
+
+  @Get(':eventID/export')
+  async export(@Param('eventID') eventID: string) {
+    return this.responseService.getResponseByEventID(eventID);
+  }
 }

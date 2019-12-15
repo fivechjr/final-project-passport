@@ -14,6 +14,7 @@ import { ResponseModule } from './response/response.module';
 import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
 import { FileModule } from './file/file.module';
+import { ExportModule } from './export/export.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { FileModule } from './file/file.module';
     }),
     CryptoModule,
     FileModule,
+    ExportModule,
   ],
   controllers: [AppController],
   providers: [AppService],

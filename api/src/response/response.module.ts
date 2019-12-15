@@ -14,5 +14,6 @@ import { ResponseService } from './response.service';
   ],
   providers: [ResponseService],
   controllers: [ResponseController],
+  exports: [ResponseService],
 })
 export class ResponseModule {}
